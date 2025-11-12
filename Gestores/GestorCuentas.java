@@ -148,13 +148,18 @@ public class GestorCuentas {
             Cliente cliente = (Cliente) usuarioActual;
             Titularidad titularidad = gTitularidades.buscarTitularidad(cliente, cuenta);
 
-            if (titularidad.getCliente()!=cliente) {
+            if (titularidad==null) {
                 System.out.println("\nERROR MOSTRAR CUENTA: No existe titularidad con esta cuenta");
                 return;
             }
+            else {
+                System.out.println("\n"+cuenta);
+            }
         }
         
-        System.out.println("\n"+cuenta);
+        else {
+            System.out.println("\n"+cuenta);
+        }
     }
 
 

@@ -79,9 +79,9 @@ public abstract class Transaccion {
     @Override
     public String toString() {
         return "\nTransaccion nro: "+idTransaccion+
-               "\nMonto:" + monto + 
-               "\nCuenta" + cuenta.getNumeroCuenta() +
-               "\nFecha" + getFechaFormateada() +
+               "\nMonto: " + monto + 
+               "\nCuenta: " + cuenta.getNumeroCuenta() +
+               "\nFecha: " + getFechaFormateada() +
                (cliente != null ? "\nRemitente: " + cliente.getNombres() : "") +
                (empleado != null ? "\nGestionado por: " + empleado.getNombres() : "");
     }
