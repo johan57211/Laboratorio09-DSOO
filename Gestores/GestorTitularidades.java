@@ -66,6 +66,7 @@ public class GestorTitularidades {
         }
         if (buscarTitularidad(clienteP, cuentaP)!=null) {
             System.out.println("\nERROR ASIGNACION TITULARIDAD: Ya existe una titularidad con esta cuenta");
+            return;
         }
 
         Titularidad titularidad = new Titularidad("Secundario", clienteP, cuentaP, contadorIds);
@@ -80,6 +81,34 @@ public class GestorTitularidades {
     public void agregarPrimeraTitularidad(Titularidad nTitularidad) {
         listaTitularidades.add(nTitularidad);
         contadorIds++;
+    }
+
+    // -- MOSTRAR TITULARES DE CUENTA --
+
+    public void mostrarTitularesDeCuenta(String numero) {
+        System.out.println("\n════════════════════════════════════");
+        System.out.println("         TITULARES DE CUENTA        ");
+        System.out.println("════════════════════════════════════");
+        
+        int numeroCuenta = validarStringNumericoInt(numero);
+
+        Cuenta cuenta = gCuentas.buscarCuenta(numeroCuenta);
+        
+        if (cuenta==null) {
+            System.out.println("\nERROR MOSTRAR TITULARES DE CUENTA: No se encontro cuenta con el numero de cuenta ingresado");
+            return;
+        }
+
+        ArrayList<Titularidad> titularesCuenta = listarTitularesDeCuenta(cuenta);
+
+        if (titularesCuenta.isEmpty()) {
+            System.out.println("-- No existen titulares en esta cuenta -- ??");
+        }
+        else {
+            for (Titularidad titularidad : titularesCuenta) {
+                System.out.println("\n"+titularidad);
+            }
+        }
     }
 
     // Elimina una titularidad del registro

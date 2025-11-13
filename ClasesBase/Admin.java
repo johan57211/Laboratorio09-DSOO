@@ -28,16 +28,17 @@ public class Admin extends Empleado {
             System.out.println("10. Abrir Cuenta");
             System.out.println("11. Agregar Titular a Cuenta");
             System.out.println("12. Consultar Movimientos de Cuenta");
-            System.out.println("13. Consultar Cuentas de Cliente");
-            System.out.println("14. Consultar Lista de Cuentas");
-            System.out.println("15. Consultar Cuenta");
-            System.out.println("16. Eliminar Cuenta");
+            System.out.println("13. Consultar Titulares de Cuenta");
+            System.out.println("14. Consultar Cuentas de Cliente");
+            System.out.println("15. Consultar Lista de Cuentas");
+            System.out.println("16. Consultar Cuenta");
+            System.out.println("17. Eliminar Cuenta");
 
             System.out.println("\n--- TRANSACCIONES ---");
-            System.out.println("17. Procesar Depósito");
-            System.out.println("18. Procesar Retiro");
-            System.out.println("19. Procesar Transferencia");
-            System.out.println("20. Ver Todas las Transacciones");
+            System.out.println("18. Procesar Depósito");
+            System.out.println("19. Procesar Retiro");
+            System.out.println("20. Procesar Transferencia");
+            System.out.println("21. Ver Todas las Transacciones");
             System.out.println("\nQ. Cerrar Sesión");
     }
 }

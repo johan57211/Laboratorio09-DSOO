@@ -38,7 +38,6 @@ public class Banco {
 
     public Usuario autentificarUsuario(Usuario tipoUsuario, String correo, String contraseña) {
         if (tipoUsuario instanceof Cliente) {
-            
             Cliente cliente = getgClientes().buscarClienteCorreo(correo);
             if (cliente==null) {
                 return null;
@@ -46,25 +45,19 @@ public class Banco {
             if (!cliente.getContraseña().equals(contraseña)) {
                 return null;
             }
-
             return cliente;
         }
-
         else if (tipoUsuario instanceof Admin) {
-            
             Admin adminB = getgEmpleados().getAdmin();
             
             if (!adminB.getCorreo().equals(correo)) {
                 return null;
             }
-            
             if (!adminB.getContraseña().equals(contraseña)) {
                 return null;
             }
-
             return adminB;
         }
-        
         else if (tipoUsuario instanceof Empleado) {
             Empleado empleado = (Empleado) getgEmpleados().buscarEmpleadoPorCorreo(correo);
             if (empleado==null) {
@@ -73,14 +66,11 @@ public class Banco {
             if (!empleado.getContraseña().equals(contraseña)) {
                 return null;
             }
-
             return empleado;
         }
-        
         else {
             return null;
         }
-
     }
 
     public void mostrarMenuPrincipal() {

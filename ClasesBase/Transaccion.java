@@ -82,7 +82,7 @@ public abstract class Transaccion {
                "\nMonto: " + monto + 
                "\nCuenta: " + cuenta.getNumeroCuenta() +
                "\nFecha: " + getFechaFormateada() +
-               (cliente != null ? "\nRemitente: " + cliente.getNombres() : "") +
+               (cliente != null ? "\nRemitente: " + cliente.getNombres() : "") + "\tDNI: "+cliente.getDni()+
                (empleado != null ? "\nGestionado por: " + empleado.getNombres() : "");
     }
 }

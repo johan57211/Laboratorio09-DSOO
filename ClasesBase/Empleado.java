@@ -24,14 +24,15 @@ public class Empleado extends Usuario {
             System.out.println("5. Abrir Cuenta");
             System.out.println("6. Agregar Titular a Cuenta");
             System.out.println("7. Consultar Movimientos de Cuenta");
-            System.out.println("8. Consultar Cuentas de Cliente");
-            System.out.println("9. Consultar Cuenta");
-            System.out.println("10. Eliminar Cuenta");
+            System.out.println("8. Consultar Titulares de Cuenta");
+            System.out.println("9. Consultar Cuentas de Cliente");
+            System.out.println("10. Consultar Cuenta");
+            System.out.println("11. Eliminar Cuenta");
             
             System.out.println("\n--- TRANSACCIONES ---");
-            System.out.println("11. Procesar Depósito");
-            System.out.println("12. Procesar Retiro");
-            System.out.println("13. Procesar Transferencia");
+            System.out.println("12. Procesar Depósito");
+            System.out.println("13. Procesar Retiro");
+            System.out.println("14. Procesar Transferencia");
             System.out.println("\nQ. Cerrar Sesión");
         
     }

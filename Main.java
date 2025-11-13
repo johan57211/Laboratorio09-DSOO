@@ -180,22 +180,25 @@ public class Main {
                     consultarMovimientosCuenta(empleado);
                     break;
                 case "8":
-                    consultarMisCuentas(empleado);
+                    mostrarTitularesDeCuenta();
                     break;
                 case "9":
-                    consultarCuenta(empleado);
+                    consultarMisCuentas(empleado);
                     break;
                 case "10":
+                    consultarCuenta(empleado);
+                    break;
+                case "11":
                     eliminarCuenta();
                     break;
 
-                case "11":
+                case "12":
                     procesarDeposito(empleado);
                     break;
-                case "12":
+                case "13":
                     procesarRetiro(empleado);
                     break;
-                case "13":
+                case "14":
                     procesarTransferencia(empleado);
                     break;
                 
@@ -263,29 +266,32 @@ public class Main {
                     consultarMovimientosCuenta(admin);
                     break;
                 case "13":
-                    consultarMisCuentas(admin);
+                    mostrarTitularesDeCuenta();
                     break;
                 case "14":
-                    banco.getgCuentas().mostrarCuentas();
+                    consultarMisCuentas(admin);
                     break;
                 case "15":
-                    consultarCuenta(admin);
+                    banco.getgCuentas().mostrarCuentas();
                     break;
                 case "16":
+                    consultarCuenta(admin);
+                    break;
+                case "17":
                     eliminarCuenta();
                     break;
                 
-                case "17":
+                case "18":
                     procesarDeposito(admin);
                     break;
-                case "18":
+                case "19":
                     procesarRetiro(admin);
                     break;
-                case "19":
+                case "20":
                     procesarTransferencia(admin);
                     break;
                 
-                case "20":
+                case "21":
                     verTodasTransacciones(admin);
                     break;
                 
@@ -426,34 +432,55 @@ public class Main {
         
         banco.getgTitularidades().agregarTitularidad(dni, numeroCuenta);
     }
+    
+    private static void mostrarTitularesDeCuenta() {
+        System.out.println("\n--- MOSTRAR TITULARES DE CUENTA ---");
+        System.out.print("Numero de cuenta: ");
+        String cuenta = scanner.nextLine();
+
+        banco.getgTitularidades().mostrarTitularesDeCuenta(cuenta);
+    }
 
     // ========== FUNCIONES PARA TRANSACCIONES ==========
 
     private static void procesarDeposito(Usuario usuario) {
-
+        String numeroCuenta, monto, dni, clave;
         System.out.print("\n--- INGRESAR DATOS DEPOSITO ---");
         System.out.print("\nNúmero de Cuenta: ");
-        String numeroCuenta = scanner.nextLine();
+        numeroCuenta = scanner.nextLine();
         System.out.print("Monto a depositar: ");
-        String monto = scanner.nextLine();
-        System.out.print("DNI del Cliente que Depositara: ");
-        String dni = scanner.nextLine();
+        monto = scanner.nextLine();
+        
+        if (usuario instanceof Cliente) {
+            dni = String.valueOf(usuario.getDni());
+        }
+        else {
+            System.out.print("DNI del Cliente que Depositara: ");
+            dni = scanner.nextLine();
+        }
+
         System.out.print("Clave de la cuenta: ");
-        String clave = scanner.nextLine();
+        clave = scanner.nextLine();
         
         banco.getgTransacciones().procesarDeposito(usuario, numeroCuenta, monto, dni, clave);
     }
 
     private static void procesarRetiro(Usuario usuario) {
+        String numeroCuenta, monto, dni, clave;
         System.out.print("\n--- INGRESAR DATOS RETIRO ---");
         System.out.print("\nNúmero de Cuenta: ");
-        String numeroCuenta = scanner.nextLine();
+        numeroCuenta = scanner.nextLine();
         System.out.print("Monto a retirar: ");
-        String monto = scanner.nextLine();
-        System.out.print("DNI del Cliente: ");
-        String dni = scanner.nextLine();
+        monto = scanner.nextLine();
+        if (usuario instanceof Cliente) {
+            dni = String.valueOf(usuario.getDni());
+        }
+        else {
+            System.out.print("DNI del Cliente que Retirara: ");
+            dni = scanner.nextLine();
+        }
         System.out.print("Clave de la cuenta: ");
-        String clave = scanner.nextLine();
+        clave = scanner.nextLine();
         
         banco.getgTransacciones().procesarRetiro(usuario, numeroCuenta, monto, dni, clave);
     }

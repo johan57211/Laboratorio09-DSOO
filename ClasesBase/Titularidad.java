@@ -62,7 +62,8 @@ public class Titularidad {
     public String toString() {
         return "\n---Contrato de Titularidad---"+
                 "\nFecha: "+fechaCreacion+
-                "\nCliente: "+cliente.getDni()+
+                "\nDNI: "+cliente.getDni()+
+                "\nCliente: "+cliente.getNombres()+
                 "\nTipo de Titular: "+tipo+
                 "\nCuenta: "+cuenta.getNumeroCuenta()+"\tTipo: "+cuenta.getTipoCuenta();
     }
