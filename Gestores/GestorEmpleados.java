@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import ClasesBase.Admin;
-import ClasesBase.Empleado;
-import ClasesBase.Usuario;
+import ClasesBase.*;
 
 public class GestorEmpleados {
 
