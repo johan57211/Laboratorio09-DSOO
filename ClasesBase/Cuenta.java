@@ -1,6 +1,7 @@
 package ClasesBase;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Cuenta {
@@ -38,10 +39,12 @@ public class Cuenta {
     }
 
     public String toString() {
-        return "\n---Contrato de apertura de Cuenta---"+
-                "\nNum. Cuenta: "+numeroCuenta+
-                "\nSaldo: "+saldo+
-                "\nTipo de Cuenta: "+tipoCuenta+
-                "\nFecha de Apertura: "+fechaApertura;
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+
+        return "\n---Contrato de apertura de Cuenta---" +
+                "\nNum. Cuenta: " + numeroCuenta +
+                "\nSaldo: " + saldo +
+                "\nTipo de Cuenta: " + tipoCuenta +
+                "\nFecha de Apertura: " + fechaApertura.format(formato);
     }
 }

@@ -1,6 +1,7 @@
 package ClasesBase;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Titularidad {
     private int idTitularidad;
@@ -60,11 +61,15 @@ public class Titularidad {
     }
 
     public String toString() {
-        return "\n---Contrato de Titularidad---"+
-                "\nFecha: "+fechaCreacion+
-                "\nDNI: "+cliente.getDni()+
-                "\nCliente: "+cliente.getNombres()+
-                "\nTipo de Titular: "+tipo+
-                "\nCuenta: "+cuenta.getNumeroCuenta()+"\tTipo: "+cuenta.getTipoCuenta();
+        
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+
+        return "\n---Contrato de Titularidad---" +
+                "\nFecha: " + fechaCreacion.format(formato) +
+                "\nDNI: " + cliente.getDni() +
+                "\nCliente: " + cliente.getNombres() +
+                "\nTipo de Titular: " + tipo +
+                "\nCuenta: " + cuenta.getNumeroCuenta() +
+                "\tTipo: " + cuenta.getTipoCuenta();
     }
 }
