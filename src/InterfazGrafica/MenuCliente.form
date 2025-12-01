@@ -44,7 +44,7 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Iconos/Untitled (3).png"/>
+              <Image iconType="3" name="/Iconos/Lateral.png"/>
             </Property>
             <Property name="verticalAlignment" type="int" value="1"/>
           </Properties>
@@ -73,7 +73,7 @@
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Iconos/Untitled (4).png"/>
+                  <Image iconType="3" name="/Iconos/clienteIcono.png"/>
                 </Property>
                 <Property name="verticalAlignment" type="int" value="1"/>
               </Properties>

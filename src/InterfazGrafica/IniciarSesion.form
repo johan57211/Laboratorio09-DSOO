@@ -55,7 +55,7 @@
         <Component class="javax.swing.JLabel" name="iconoBanco">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Iconos/Untitled (2).png"/>
+              <Image iconType="3" name="/Iconos/iconoBank.png"/>
             </Property>
             <Property name="verticalAlignment" type="int" value="1"/>
           </Properties>
@@ -265,7 +265,7 @@
       <Properties>
         <Property name="horizontalAlignment" type="int" value="2"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Iconos/Untitled (3).png"/>
+          <Image iconType="3" name="/Iconos/Lateral.png"/>
         </Property>
         <Property name="verticalAlignment" type="int" value="1"/>
       </Properties>

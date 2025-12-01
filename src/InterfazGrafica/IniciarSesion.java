@@ -42,7 +42,7 @@ public class IniciarSesion extends javax.swing.JFrame {
         jPanel2.setMinimumSize(new java.awt.Dimension(650, 500));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        iconoBanco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Untitled (2).png"))); // NOI18N
+        iconoBanco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/iconoBank.png"))); // NOI18N
         iconoBanco.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jPanel2.add(iconoBanco, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 70, 70));
 
@@ -122,7 +122,7 @@ public class IniciarSesion extends javax.swing.JFrame {
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 400, 450));
 
         lateralmg.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lateralmg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Untitled (3).png"))); // NOI18N
+        lateralmg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Lateral.png"))); // NOI18N
         lateralmg.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         getContentPane().add(lateralmg, new org.netbeans.lib.awtextra.AbsoluteConstraints(-50, 0, 550, 450));
 
