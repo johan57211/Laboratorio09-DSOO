@@ -1,11 +1,9 @@
 package Banco.Gestores;
 
 import Banco.BancoExceptions.BancoException;
+import Banco.ClasesBase.*;
 import java.util.ArrayList;
 
-import ClasesBase.Cliente;
-import ClasesBase.Cuenta;
-import ClasesBase.Titularidad;
 
 
 public class GestorTitularidades {

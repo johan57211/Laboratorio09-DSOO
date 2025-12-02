@@ -1,4 +1,4 @@
-package ClasesBase;
+package Banco.ClasesBase;
 
 public class Retiro extends Transaccion {
 

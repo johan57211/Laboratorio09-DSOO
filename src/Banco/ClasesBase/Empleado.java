@@ -1,4 +1,4 @@
-package ClasesBase;
+package Banco.ClasesBase;
 
 public class Empleado extends Usuario {
     protected int idEmpleado;

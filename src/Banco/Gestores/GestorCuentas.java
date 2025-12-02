@@ -1,8 +1,7 @@
 package Banco.Gestores;
 
 import Banco.BancoExceptions.BancoException;
-import ClasesBase.*;
-import Gestores.*;
+import Banco.ClasesBase.*;
 import java.util.*;
 
 

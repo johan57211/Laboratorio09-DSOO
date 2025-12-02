@@ -1,4 +1,4 @@
-package ClasesBase;
+package Banco.ClasesBase;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

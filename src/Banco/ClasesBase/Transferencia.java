@@ -1,11 +1,18 @@
 
-package ClasesBase;
+package Banco.ClasesBase;
 
 public class Transferencia extends Transaccion {
     private Cuenta cuentaDestino;
 
     public Transferencia(Cliente cliente, Empleado empleado, Cuenta cuentaOrigen, Cuenta cuentaDestino, double monto, int idTransaccion) {
         super(cliente, empleado, cuentaOrigen, monto, idTransaccion);
+        this.cuentaDestino = cuentaDestino;
+    }
+    
+    // Caso en que el Cliente realice la transferencia
+    
+    public Transferencia(Cliente cliente, Cuenta cuentaOrigen, Cuenta cuentaDestino, double monto, int idTransaccion) {
+        super(cliente, null, cuentaOrigen, monto, idTransaccion);
         this.cuentaDestino = cuentaDestino;
     }
 

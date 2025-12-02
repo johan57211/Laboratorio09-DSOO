@@ -1,6 +1,6 @@
 package Banco.Gestores;
 import Banco.BancoExceptions.BancoException;
-import ClasesBase.*;
+import Banco.ClasesBase.*;
 
 import java.util.ArrayList;
 
@@ -182,14 +182,9 @@ public class GestorTransacciones {
     }
 
     // ========== TRANSFERENCIA ==========
-    public Transferencia procesarTransferencia(Empleado usuarioActual, String numeroCuentaOrigen, 
-                                               String numeroCuentaDestino, String monto, 
-                                               String dniCliente, String claveCuenta) throws BancoException {
+    public Transferencia procesarTransferencia(Usuario usuarioActual, String numeroCuentaOrigen, String numeroCuentaDestino, String monto, String dniCliente, String claveCuenta) throws BancoException {
         
-        // Validar permisos
-        if (!(usuarioActual instanceof Empleado) && !(usuarioActual instanceof Admin)) {
-            throw new BancoException.PermisosDenegadosException("Solo empleados y administradores pueden procesar transferencias");
-        }
+        
 
         // Validar y parsear datos
         int numCuentaOrigen = validarStringNumericoInt(numeroCuentaOrigen);
@@ -244,10 +239,18 @@ public class GestorTransacciones {
                 "Saldo insuficiente. Disponible: S/" + String.format("%.2f", cuentaOrigen.getSaldo())
             );
         }
-
+        
+        
         // Procesar transferencia
-        Transferencia transferencia = new Transferencia(cliente, usuarioActual, cuentaOrigen, 
-                                                       cuentaDestino, montoTransf, contadorIdTransaccion);
+        Transferencia transferencia;
+        if (usuarioActual instanceof Cliente) {
+            
+            transferencia = new Transferencia((Cliente) usuarioActual, cuentaOrigen, cuentaDestino, montoTransf, contadorIdTransaccion);
+        }
+        
+        else  {
+            transferencia = new Transferencia(cliente, (Empleado) usuarioActual, cuentaOrigen, cuentaDestino, montoTransf, contadorIdTransaccion);
+        }
 
         transferencia.procesar();
         cliente.añadirTransaccion(transferencia);

@@ -1,4 +1,4 @@
-package ClasesBase;
+package Banco.ClasesBase;
 import java.util.*;
 
 public class Cliente extends Usuario {

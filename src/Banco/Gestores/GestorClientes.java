@@ -1,11 +1,11 @@
 package Banco.Gestores;
 
 import Banco.BancoExceptions.BancoException;
+import Banco.ClasesBase.*;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import ClasesBase.Cliente;
 
 
 
