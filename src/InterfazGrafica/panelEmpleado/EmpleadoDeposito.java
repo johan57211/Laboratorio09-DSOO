@@ -51,58 +51,79 @@ public class EmpleadoDeposito extends javax.swing.JPanel {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
 
         setBackground(new java.awt.Color(204, 0, 0));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Palatino Linotype", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Deposito Bancario");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, 60));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Inserte Datos Del Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto Condensed", 0, 18))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Inserte Datos Del Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto Condensed", 0, 18), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel1.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Roboto Condensed", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("NOMBRE DEL TITULAR: ");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("DATOS DE LA TRANSACCION");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Roboto Condensed", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("DNI: ");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("DATOS DEL CLIENTE");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
+        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel7.setFont(new java.awt.Font("Roboto Condensed", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("NUMERO DE LA CUENTA: ");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
+        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel8.setFont(new java.awt.Font("Roboto Condensed", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("MONTO A DEPOSITAR: ");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, -1, 30));
 
+        dniField.setBackground(new java.awt.Color(153, 153, 153));
         dniField.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
+        dniField.setForeground(new java.awt.Color(0, 0, 0));
         dniField.addActionListener(this::dniFieldActionPerformed);
-        jPanel1.add(dniField, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 91, 170, 30));
+        jPanel1.add(dniField, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 170, 30));
 
+        numCuentaField.setBackground(new java.awt.Color(153, 153, 153));
         numCuentaField.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
+        numCuentaField.setForeground(new java.awt.Color(0, 0, 0));
         numCuentaField.addActionListener(this::numCuentaFieldActionPerformed);
-        jPanel1.add(numCuentaField, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 170, 30));
+        jPanel1.add(numCuentaField, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 170, 30));
 
+        nomTitularField.setBackground(new java.awt.Color(153, 153, 153));
         nomTitularField.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
+        nomTitularField.setForeground(new java.awt.Color(0, 0, 0));
         nomTitularField.addActionListener(this::nomTitularFieldActionPerformed);
-        jPanel1.add(nomTitularField, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 121, 170, 30));
+        jPanel1.add(nomTitularField, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 170, 30));
 
+        montoField.setBackground(new java.awt.Color(153, 153, 153));
         montoField.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
+        montoField.setForeground(new java.awt.Color(0, 0, 0));
         montoField.addActionListener(this::montoFieldActionPerformed);
-        jPanel1.add(montoField, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 81, 170, 30));
+        jPanel1.add(montoField, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 70, 170, 30));
 
         depositarBtn.setBackground(new java.awt.Color(204, 0, 0));
         depositarBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -110,7 +131,7 @@ public class EmpleadoDeposito extends javax.swing.JPanel {
         depositarBtn.setText("Limpiar");
         depositarBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         depositarBtn.setDefaultCapable(false);
-        jPanel1.add(depositarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 120, 40));
+        jPanel1.add(depositarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 130, 120, 40));
 
         limpiarBtn.setBackground(new java.awt.Color(204, 0, 0));
         limpiarBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -118,23 +139,23 @@ public class EmpleadoDeposito extends javax.swing.JPanel {
         limpiarBtn.setText("Depositar");
         limpiarBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         limpiarBtn.setDefaultCapable(false);
-        jPanel1.add(limpiarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 120, 40));
+        jPanel1.add(limpiarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, 120, 40));
 
         boleta.setBackground(new java.awt.Color(255, 255, 255));
-        boleta.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0), 3), "Deposito Exitoso", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Roboto Condensed", 0, 18))); // NOI18N
+        boleta.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0), 3), "Deposito Exitoso", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Roboto Condensed", 1, 18), new java.awt.Color(0, 0, 0))); // NOI18N
         boleta.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         numTransField.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
         numTransField.addActionListener(this::numTransFieldActionPerformed);
-        boleta.add(numTransField, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 170, 20));
+        boleta.add(numTransField, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, 170, -1));
 
         numField.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
         numField.addActionListener(this::numFieldActionPerformed);
-        boleta.add(numField, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 170, -1));
+        boleta.add(numField, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 170, -1));
 
         depositadoField.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
         depositadoField.addActionListener(this::depositadoFieldActionPerformed);
-        boleta.add(depositadoField, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 170, -1));
+        boleta.add(depositadoField, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 170, -1));
 
         salAnteriorField.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
         salAnteriorField.addActionListener(this::salAnteriorFieldActionPerformed);
@@ -144,29 +165,71 @@ public class EmpleadoDeposito extends javax.swing.JPanel {
         salActualField.addActionListener(this::salActualFieldActionPerformed);
         boleta.add(salActualField, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 170, -1));
 
-        jLabel13.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Saldo Actual: ");
         boleta.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
 
-        jLabel14.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Numero de Transaccion: ");
-        boleta.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
+        boleta.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, 20));
 
-        jLabel15.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("Numero de Cuenta: ");
-        boleta.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
+        boleta.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, 30));
 
-        jLabel16.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
         jLabel16.setText("Monto Depositado: ");
-        boleta.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
+        boleta.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, 30));
 
-        jLabel17.setFont(new java.awt.Font("Roboto Condensed", 0, 14)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Roboto Condensed", 1, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setText("Saldo Anterior:");
         boleta.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
 
         jPanel1.add(boleta, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 440, 240));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 690, 460));
+        jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 170, 10));
+
+        jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 100, 170, 10));
+
+        jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 170, 10));
+
+        jSeparator4.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 170, 10));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 735, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1))
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void dniFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dniFieldActionPerformed
@@ -224,6 +287,10 @@ public class EmpleadoDeposito extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JButton limpiarBtn;
     private javax.swing.JTextField montoField;
     private javax.swing.JTextField nomTitularField;

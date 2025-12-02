@@ -4,7 +4,7 @@
  */
 package InterfazGrafica;
 
-import ClasesBase.Empleado;
+import Banco.ClasesBase.*;
 import java.awt.CardLayout;
 import java.awt.Color;
 import javax.swing.SwingUtilities;
