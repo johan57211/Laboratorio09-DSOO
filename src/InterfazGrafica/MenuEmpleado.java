@@ -4,11 +4,24 @@
  */
 package InterfazGrafica;
 
+import ClasesBase.Empleado;
+import java.awt.CardLayout;
+import java.awt.Color;
+import javax.swing.SwingUtilities;
+
 /**
  *
  * @author thebe
  */
 public class MenuEmpleado extends javax.swing.JFrame {
+    
+    EmpleadoDeposito deposito = new EmpleadoDeposito();
+    EmpleadoRetiro retiro = new EmpleadoRetiro();
+    EmpleadoRegistrarCliente registrar = new EmpleadoRegistrarCliente();
+    EmpleadoConsultarInformacion consultar = new EmpleadoConsultarInformacion();
+    EmpleadoMovimientosDeCuenta movimientos = new EmpleadoMovimientosDeCuenta();
+    
+    CardLayout vista;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MenuEmpleado.class.getName());
 
@@ -17,6 +30,7 @@ public class MenuEmpleado extends javax.swing.JFrame {
      */
     public MenuEmpleado() {
         initComponents();
+        vista = (CardLayout) Pnl_vista_principal.getLayout();
     }
 
     /**
@@ -29,229 +43,206 @@ public class MenuEmpleado extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        BienvenidaLabel = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        acClienteLabel = new javax.swing.JLabel();
-        rgClienteBtn = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        movClienteBtn = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        eliClienteBtn = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
-        acCuentaLabel = new javax.swing.JLabel();
-        abrirCtBtn = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
-        agTitularBtn = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        movCuentaBtn = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        conTitularesBtn = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
-        conCuentaBtn = new javax.swing.JPanel();
-        jLabel15 = new javax.swing.JLabel();
-        eliCuentaBtn = new javax.swing.JPanel();
-        jLabel16 = new javax.swing.JLabel();
-        transaccionesLabel = new javax.swing.JLabel();
-        depositoBtn = new javax.swing.JPanel();
-        jLabel17 = new javax.swing.JLabel();
-        retiroBtn = new javax.swing.JPanel();
-        jLabel18 = new javax.swing.JLabel();
-        transferenciaBtn = new javax.swing.JPanel();
-        jLabel19 = new javax.swing.JLabel();
-        cerrarBtn = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
+        movCuentaBtn = new javax.swing.JButton();
+        rgDepBtn = new javax.swing.JButton();
+        rgRetBtn = new javax.swing.JButton();
+        rgClienteBtn = new javax.swing.JButton();
+        consultaBtn = new javax.swing.JButton();
+        Pnl_vista_principal = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Lateral.png"))); // NOI18N
-        jLabel1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-180, 0, 550, 460));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0), 3));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(java.awt.Color.white);
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        BienvenidaLabel.setFont(new java.awt.Font("Roboto Condensed", 0, 24)); // NOI18N
-        BienvenidaLabel.setText("Bienvenido Estimado Empleado");
-        jPanel2.add(BienvenidaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, -1, -1));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/empleadoIcono.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/clienteIcono.png"))); // NOI18N
         jLabel3.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 110, 110));
-
-        acClienteLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        acClienteLabel.setText("ACCIONES PARA CLIENTE");
-        jPanel2.add(acClienteLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, -1, -1));
-
-        rgClienteBtn.setBackground(new java.awt.Color(204, 0, 0));
-        rgClienteBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel8.setForeground(java.awt.Color.white);
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("Registrar Cliente");
-        rgClienteBtn.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 30));
-
-        jPanel2.add(rgClienteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 160, 30));
-
-        movClienteBtn.setBackground(new java.awt.Color(204, 0, 0));
-        movClienteBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel9.setForeground(java.awt.Color.white);
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("Consultar Movimientos");
-        movClienteBtn.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 30));
-
-        jPanel2.add(movClienteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 160, 30));
-
-        eliClienteBtn.setBackground(new java.awt.Color(204, 0, 0));
-        eliClienteBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel10.setForeground(java.awt.Color.white);
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Eliminar Cliente");
-        eliClienteBtn.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 30));
-
-        jPanel2.add(eliClienteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, 160, 30));
-
-        acCuentaLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        acCuentaLabel.setText("ACCIONES PARA CUENTA");
-        jPanel2.add(acCuentaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, -1, -1));
-
-        abrirCtBtn.setBackground(new java.awt.Color(204, 0, 0));
-        abrirCtBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel13.setForeground(java.awt.Color.white);
-        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setText("Abrir Cuenta");
-        abrirCtBtn.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 30));
-
-        jPanel2.add(abrirCtBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 160, 30));
-
-        agTitularBtn.setBackground(new java.awt.Color(204, 0, 0));
-        agTitularBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel11.setForeground(java.awt.Color.white);
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("Agregar Titular");
-        agTitularBtn.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 30));
-
-        jPanel2.add(agTitularBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 160, 30));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 110, 110));
 
         movCuentaBtn.setBackground(new java.awt.Color(204, 0, 0));
-        movCuentaBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        movCuentaBtn.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
+        movCuentaBtn.setForeground(new java.awt.Color(255, 255, 255));
+        movCuentaBtn.setText("Movimientos De Cuenta");
+        movCuentaBtn.setBorderPainted(false);
+        movCuentaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        movCuentaBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                movCuentaBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                movCuentaBtnMouseExited(evt);
+            }
+        });
+        movCuentaBtn.addActionListener(this::movCuentaBtnActionPerformed);
+        jPanel3.add(movCuentaBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 190, 50));
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel12.setForeground(java.awt.Color.white);
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("Consultar Movimientos");
-        movCuentaBtn.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 30));
+        rgDepBtn.setBackground(new java.awt.Color(204, 0, 0));
+        rgDepBtn.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
+        rgDepBtn.setForeground(new java.awt.Color(255, 255, 255));
+        rgDepBtn.setText("Registrar Deposito");
+        rgDepBtn.setBorderPainted(false);
+        rgDepBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        rgDepBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                rgDepBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                rgDepBtnMouseExited(evt);
+            }
+        });
+        rgDepBtn.addActionListener(this::rgDepBtnActionPerformed);
+        jPanel3.add(rgDepBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 190, 50));
 
-        jPanel2.add(movCuentaBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 160, 30));
+        rgRetBtn.setBackground(new java.awt.Color(204, 0, 0));
+        rgRetBtn.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
+        rgRetBtn.setForeground(new java.awt.Color(255, 255, 255));
+        rgRetBtn.setText("Registrar Retiro");
+        rgRetBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        rgRetBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                rgRetBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                rgRetBtnMouseExited(evt);
+            }
+        });
+        rgRetBtn.addActionListener(this::rgRetBtnActionPerformed);
+        jPanel3.add(rgRetBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 190, 50));
 
-        conTitularesBtn.setBackground(new java.awt.Color(204, 0, 0));
-        conTitularesBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        rgClienteBtn.setBackground(new java.awt.Color(204, 0, 0));
+        rgClienteBtn.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
+        rgClienteBtn.setForeground(new java.awt.Color(255, 255, 255));
+        rgClienteBtn.setText("Registrar Nuevo Cliente");
+        rgClienteBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        rgClienteBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                rgClienteBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                rgClienteBtnMouseExited(evt);
+            }
+        });
+        rgClienteBtn.addActionListener(this::rgClienteBtnActionPerformed);
+        jPanel3.add(rgClienteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 190, 50));
 
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel14.setForeground(java.awt.Color.white);
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setText("Consultar Titulares");
-        conTitularesBtn.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 30));
+        consultaBtn.setBackground(new java.awt.Color(204, 0, 0));
+        consultaBtn.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
+        consultaBtn.setForeground(new java.awt.Color(255, 255, 255));
+        consultaBtn.setText("Consultar Informacion Clientes");
+        consultaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        consultaBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                consultaBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                consultaBtnMouseExited(evt);
+            }
+        });
+        consultaBtn.addActionListener(this::consultaBtnActionPerformed);
+        jPanel3.add(consultaBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 190, 50));
 
-        jPanel2.add(conTitularesBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 160, 30));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 610));
 
-        conCuentaBtn.setBackground(new java.awt.Color(204, 0, 0));
-        conCuentaBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Pnl_vista_principal.setBackground(new java.awt.Color(204, 0, 0));
+        Pnl_vista_principal.setLayout(new java.awt.CardLayout());
+        jPanel1.add(Pnl_vista_principal, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 730, 610));
 
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel15.setForeground(java.awt.Color.white);
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("Consultar Cuenta");
-        conCuentaBtn.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 30));
-
-        jPanel2.add(conCuentaBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, 160, 30));
-
-        eliCuentaBtn.setBackground(new java.awt.Color(204, 0, 0));
-        eliCuentaBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel16.setForeground(java.awt.Color.white);
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("Eliminar Cuenta");
-        eliCuentaBtn.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 30));
-
-        jPanel2.add(eliCuentaBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 270, 160, 30));
-
-        transaccionesLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        transaccionesLabel.setText("TRANSACCIONES");
-        jPanel2.add(transaccionesLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, -1, -1));
-
-        depositoBtn.setBackground(new java.awt.Color(204, 0, 0));
-        depositoBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel17.setForeground(java.awt.Color.white);
-        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel17.setText("Procesar Deposito");
-        depositoBtn.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 30));
-
-        jPanel2.add(depositoBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 160, 30));
-
-        retiroBtn.setBackground(new java.awt.Color(204, 0, 0));
-        retiroBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel18.setForeground(java.awt.Color.white);
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel18.setText("Procesar Retiro");
-        retiroBtn.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 30));
-
-        jPanel2.add(retiroBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 360, 160, 30));
-
-        transferenciaBtn.setBackground(new java.awt.Color(204, 0, 0));
-        transferenciaBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel19.setForeground(java.awt.Color.white);
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel19.setText("Procesar Transferencia");
-        transferenciaBtn.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 30));
-
-        jPanel2.add(transferenciaBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 360, 160, 30));
-
-        cerrarBtn.setBackground(new java.awt.Color(204, 0, 0));
-        cerrarBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel7.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
-        jLabel7.setForeground(java.awt.Color.white);
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("CERRAR SESION");
-        cerrarBtn.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 40));
-
-        jPanel2.add(cerrarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 410, 160, 40));
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 530, 460));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void rgDepBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rgDepBtnActionPerformed
+        Pnl_vista_principal.add(deposito, "deposito");
+        vista.show(Pnl_vista_principal, "deposito");
+        SwingUtilities.updateComponentTreeUI(this);
+        this.repaint();
+    }//GEN-LAST:event_rgDepBtnActionPerformed
+
+    private void rgDepBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rgDepBtnMouseEntered
+        rgDepBtn.setBackground(new Color(255,255,255));
+        rgDepBtn.setForeground(new Color(0,0,0));         // letras negras
+    }//GEN-LAST:event_rgDepBtnMouseEntered
+
+    private void rgDepBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rgDepBtnMouseExited
+        rgDepBtn.setBackground(new Color(204,0,0));
+        rgDepBtn.setForeground(new Color(255,255,255));
+    }//GEN-LAST:event_rgDepBtnMouseExited
+
+    private void rgRetBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rgRetBtnMouseEntered
+        rgRetBtn.setBackground(new Color(255,255,255));
+        rgRetBtn.setForeground(new Color(0,0,0));
+    }//GEN-LAST:event_rgRetBtnMouseEntered
+
+    private void rgRetBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rgRetBtnMouseExited
+        rgRetBtn.setBackground(new Color(204,0,0));
+        rgRetBtn.setForeground(new Color(255,255,255));
+    }//GEN-LAST:event_rgRetBtnMouseExited
+
+    private void rgClienteBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rgClienteBtnMouseEntered
+        rgClienteBtn.setBackground(new Color(255,255,255));
+        rgClienteBtn.setForeground(new Color(0,0,0));
+    }//GEN-LAST:event_rgClienteBtnMouseEntered
+
+    private void rgClienteBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rgClienteBtnMouseExited
+        rgClienteBtn.setBackground(new Color(204,0,0));
+        rgClienteBtn.setForeground(new Color(255,255,255));
+    }//GEN-LAST:event_rgClienteBtnMouseExited
+
+    private void consultaBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_consultaBtnMouseEntered
+        consultaBtn.setBackground(new Color(255,255,255));
+        consultaBtn.setForeground(new Color(0,0,0));
+    }//GEN-LAST:event_consultaBtnMouseEntered
+
+    private void consultaBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_consultaBtnMouseExited
+        consultaBtn.setBackground(new Color(204,0,0));
+        consultaBtn.setForeground(new Color(255,255,255));
+    }//GEN-LAST:event_consultaBtnMouseExited
+
+    private void movCuentaBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_movCuentaBtnMouseEntered
+        movCuentaBtn.setBackground(new Color(255,255,255));
+        movCuentaBtn.setForeground(new Color(0,0,0));
+    }//GEN-LAST:event_movCuentaBtnMouseEntered
+
+    private void movCuentaBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_movCuentaBtnMouseExited
+        movCuentaBtn.setBackground(new Color(204,0,0));
+        movCuentaBtn.setForeground(new Color(255,255,255));
+    }//GEN-LAST:event_movCuentaBtnMouseExited
+
+    private void consultaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaBtnActionPerformed
+        Pnl_vista_principal.add(consultar, "consultar");
+        vista.show(Pnl_vista_principal, "consultar");
+        SwingUtilities.updateComponentTreeUI(this);
+        this.repaint();
+    }//GEN-LAST:event_consultaBtnActionPerformed
+
+    private void rgRetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rgRetBtnActionPerformed
+        Pnl_vista_principal.add(retiro, "retiro");
+        vista.show(Pnl_vista_principal, "retiro");
+        SwingUtilities.updateComponentTreeUI(this);
+        this.repaint();
+    }//GEN-LAST:event_rgRetBtnActionPerformed
+
+    private void rgClienteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rgClienteBtnActionPerformed
+        Pnl_vista_principal.add(registrar, "registrar");
+        vista.show(Pnl_vista_principal, "registrar");
+        SwingUtilities.updateComponentTreeUI(this);
+        this.repaint();
+    }//GEN-LAST:event_rgClienteBtnActionPerformed
+
+    private void movCuentaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_movCuentaBtnActionPerformed
+        Pnl_vista_principal.add(movimientos, "movimientos");
+        vista.show(Pnl_vista_principal, "movimientos");
+        SwingUtilities.updateComponentTreeUI(this);
+        this.repaint();
+    }//GEN-LAST:event_movCuentaBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -279,39 +270,14 @@ public class MenuEmpleado extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel BienvenidaLabel;
-    private javax.swing.JPanel abrirCtBtn;
-    private javax.swing.JLabel acClienteLabel;
-    private javax.swing.JLabel acCuentaLabel;
-    private javax.swing.JPanel agTitularBtn;
-    private javax.swing.JPanel cerrarBtn;
-    private javax.swing.JPanel conCuentaBtn;
-    private javax.swing.JPanel conTitularesBtn;
-    private javax.swing.JPanel depositoBtn;
-    private javax.swing.JPanel eliClienteBtn;
-    private javax.swing.JPanel eliCuentaBtn;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
+    private javax.swing.JPanel Pnl_vista_principal;
+    private javax.swing.JButton consultaBtn;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel movClienteBtn;
-    private javax.swing.JPanel movCuentaBtn;
-    private javax.swing.JPanel retiroBtn;
-    private javax.swing.JPanel rgClienteBtn;
-    private javax.swing.JLabel transaccionesLabel;
-    private javax.swing.JPanel transferenciaBtn;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JButton movCuentaBtn;
+    private javax.swing.JButton rgClienteBtn;
+    private javax.swing.JButton rgDepBtn;
+    private javax.swing.JButton rgRetBtn;
     // End of variables declaration//GEN-END:variables
 }
