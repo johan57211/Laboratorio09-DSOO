@@ -1,10 +1,12 @@
-package Gestores;
+package Banco.Gestores;
 
+import Banco.BancoExceptions.BancoException;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import ClasesBase.*;
+
 
 public class GestorEmpleados {
 
@@ -26,64 +28,51 @@ public class GestorEmpleados {
 
 
     // Registrar nuevo empleado (solo Admin puede hacerlo)
-    public void registrarEmpleado(Empleado usuarioActual, String nombres, String dni, String edad, String correo, String contraseña) {
+    public Empleado registrarEmpleado(Empleado usuarioActual, String nombres, String dni, String edad, String correo, String contraseña) throws BancoException {
         // Validar permisos
         if (!(usuarioActual instanceof Admin)) {
-            System.out.println("\nERROR: Solo los administradores pueden registrar empleados");
-            return;
+            throw new BancoException.PermisosDenegadosException("Solo los administradores pueden registrar empleados");
         }
-        
-        System.out.println("\n════════════════════════════════════");
-        System.out.println("        REGISTRO DE EMPLEADO        ");
-        System.out.println("════════════════════════════════════");
 
         // Validaciones
         if (!validarStringNoVacio(nombres)) {
-            System.out.println("\nERROR: Nombres no deben estar vacíos");
-            return;
+            throw new BancoException.ValidacionException("Nombres no deben estar vacíos");
         }
 
         int dniEmpleado = validarStringNumericoInt(dni);
         int edadEmpleado = validarStringNumericoInt(edad);
 
         if (dniEmpleado == -1 || edadEmpleado == -1) {
-            System.out.println("\nERROR: DNI y edad deben ser numéricos");
-            return;
+            throw new BancoException.ValidacionException("DNI y edad deben ser numéricos");
         }
 
         if (dniEmpleado < 10000000 || dniEmpleado > 99999999) {
-            System.out.println("\nERROR: DNI debe tener 8 dígitos");
-            return;
+            throw new BancoException.ValidacionException("DNI debe tener 8 dígitos");
         }
 
         if (buscarEmpleadoPorDni(dniEmpleado) != null) {
-            System.out.println("\nERROR: DNI ya registrado en el sistema");
-            return;
+            throw new BancoException.DuplicadoException("DNI ya registrado en el sistema");
         }
 
         if (edadEmpleado < 18 || edadEmpleado > 120) {
-            System.out.println("\nERROR: Edad no válida");
-            return;
+            throw new BancoException.ValidacionException("Edad no válida");
         }
 
         
         if (buscarEmpleadoPorCorreo(correo) != null) {
-            System.out.println("\nERROR: Correo ya registrado");        //VALIDAR CORREO
-            return;
+            throw new BancoException.DuplicadoException("Correo ya registrado");        //VALIDAR CORREO
         }
         if (!esEmailValido(correo)) {
-            System.out.println("\nERROR: Formato de correo no correspondiente (ejemplo@dominio.com)");
-            return;
+            throw new BancoException.ValidacionException("Formato de correo no correspondiente (ejemplo@dominio.com)");
         }
         if (!validarStringNoVacio(contraseña)) {
-            System.out.println("\nERROR: Contraseña no válida");
-            return;
+            throw new BancoException.ValidacionException("Contraseña no válida");
         }
 
         Empleado nuevoEmpleado = new Empleado(nombres, dniEmpleado, edadEmpleado, correo, contraseña, contadorIds);
         contadorIds++;
         listaEmpleados.add(nuevoEmpleado);
-        System.out.println(nuevoEmpleado);
+        return nuevoEmpleado;
     }
 
 
@@ -91,59 +80,41 @@ public class GestorEmpleados {
 
     // -- ELIMINAR EMPLEADO -- 
     
-    public void eliminarEmpleado(Usuario usuarioActual, String dni) {
+    public boolean eliminarEmpleado(Usuario usuarioActual, String dni) throws BancoException {
         if (!(usuarioActual instanceof Admin)) {
-            System.out.println("\nERROR: Solo los administradores pueden eliminar empleados");
-            return;
+            throw new BancoException.PermisosDenegadosException("Solo los administradores pueden eliminar empleados");
         }
-        System.out.println("\n════════════════════════════════════");
-        System.out.println("          ELIMINAR EMPLEADO         ");
-        System.out.println("════════════════════════════════════");
 
         int dniEmpleado = validarStringNumericoInt(dni);
         if (dniEmpleado == -1) {
-            System.out.println("\nERROR: DNI debe ser numérico");
-            return;
+            throw new BancoException.ValidacionException("DNI debe ser numérico");
         }
 
         Empleado empleado = buscarEmpleadoPorDni(dniEmpleado);
         
         if (empleado == null) {
-            System.out.println("\nERROR: Empleado no encontrado");
-            return;
+            throw new BancoException.RecursoNoEncontradoException("Empleado no encontrado");
         }
 
         listaEmpleados.remove(empleado);
-        System.out.println("\n✓ Empleado eliminado: " + empleado.getNombres());
+        return true;
     }
 
 
     // -- LISTAR EMPLEADOS --
-    public void listarEmpleados() {
-        System.out.println("\n════════════════════════════════════");
-        System.out.println("          LISTA DE EMPLEADOS        ");
-        System.out.println("════════════════════════════════════");
-        
-        if (listaEmpleados.isEmpty()) {
-            System.out.println("No hay empleados registrados");
-        }
-        else {
-            for (Empleado empleado : listaEmpleados) {
-            System.out.println("\n"+empleado);
-            }
-        }
+    public ArrayList<Empleado> listarEmpleados() {
+        return listaEmpleados;
     }
     
     // -- MOSTRAR EMPLEADO --
-    public void mostrarEmpleado(String dniEmpleado) {
+    public Empleado mostrarEmpleado(String dniEmpleado) throws BancoException {
         int dniEmpl = validarStringNumericoInt(dniEmpleado);
         Empleado empleado = buscarEmpleadoPorDni(dniEmpl);
         
         if (empleado == null) {
-            System.out.println("\nERROR MOSTRAR EMPLEADO: No hay registro de empleado con ese Dni");
-            return;
+            throw new BancoException.RecursoNoEncontradoException("No hay registro de empleado con ese Dni");
         }
-        System.out.println(empleado);
+        return empleado;
     }
     
     private int validarStringNumericoInt(String numero) {
@@ -205,3 +176,4 @@ public class GestorEmpleados {
         return null;
     }
 }
+

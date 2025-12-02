@@ -1,5 +1,5 @@
-package GestorPrincipal;
-import Gestores.*;
+package Banco.GestorPrincipal;
+import Banco.Gestores.*;
 import ClasesBase.*;
 
 public class Banco {

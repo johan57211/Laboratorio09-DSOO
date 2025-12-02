@@ -1,7 +1,9 @@
-package Gestores;
+package Banco.Gestores;
+import Banco.BancoExceptions.BancoException;
 import ClasesBase.*;
 
 import java.util.ArrayList;
+
 
 public class GestorTransacciones {
     private ArrayList<Transaccion> listaTransacciones;
@@ -18,23 +20,16 @@ public class GestorTransacciones {
         this.contadorIdTransaccion = 1;
     }
 
-
-
-
-
-
-    // -- METODO DEPOSITAR --
-    public void procesarDeposito(Usuario usuarioActual, String numeroCuenta, String monto, String dniCliente, String claveCuenta) {
-        // Validar permisos básicos
+    // ========== DEPÓSITO ==========
+    public Deposito procesarDeposito(Usuario usuarioActual, String numeroCuenta, String monto, 
+                                     String dniCliente, String claveCuenta) throws BancoException {
+        
+        // Validar permisos
         if (!(usuarioActual instanceof Cliente) && 
             !(usuarioActual instanceof Empleado) && 
             !(usuarioActual instanceof Admin)) {
-            System.out.println("\nERROR: Usuario no autorizado");
-            return;
+            throw new BancoException.PermisosDenegadosException("Usuario no autorizado para realizar depósitos");
         }
-        System.out.println("\n════════════════════════════════════");
-        System.out.println("               DEPOSITO             ");
-        System.out.println("════════════════════════════════════");
 
         // Validar y parsear datos
         int numCuenta = validarStringNumericoInt(numeroCuenta);
@@ -43,59 +38,49 @@ public class GestorTransacciones {
         int clave = validarStringNumericoInt(claveCuenta);
 
         if (numCuenta == -1) {
-            System.out.println("\nERROR DEPOSITO: Número de cuenta inválido");
-            return;
+            throw new BancoException.ValidacionException("Número de cuenta debe ser numérico");
         }
         if (montoDeposito <= 0) {
-            System.out.println("\nERROR DEPOSITO: Monto debe ser mayor a 0");
-            return;
+            throw new BancoException.ValidacionException("El monto debe ser mayor a 0");
         }
         if (dniCl == -1) {
-            System.out.println("\nERROR DEPOSITO: DNI del cliente inválido");
-            return;
+            throw new BancoException.ValidacionException("DNI debe ser numérico");
         }
         if (clave == -1 || clave < 1000 || clave > 9999) {
-            System.out.println("\nERROR DEPOSITO: Clave debe ser de 4 dígitos");
-            return;
+            throw new BancoException.ValidacionException("La clave debe tener 4 dígitos");
         }
 
         // Buscar cuenta y cliente
         Cuenta cuenta = gCuentas.buscarCuenta(numCuenta);
-        Cliente cliente = gClientes.buscarCliente(dniCl);
-
         if (cuenta == null) {
-            System.out.println("\nERROR DEPOSITO: Cuenta no encontrada");
-            return;
-        }
-        if (cliente == null) {
-            System.out.println("\nERROR DEPOSITO: Cliente no encontrado");
-            return;
+            throw new BancoException.RecursoNoEncontradoException("Cuenta no encontrada");
         }
 
-        // Validar clave de la cuenta
+        Cliente cliente = gClientes.buscarCliente(dniCl);
+        if (cliente == null) {
+            throw new BancoException.RecursoNoEncontradoException("Cliente no encontrado");
+        }
+
+        // Validar clave
         if (cuenta.getClave() != clave) {
-            System.out.println("\nERROR DEPOSITO: Clave incorrecta");
-            return;
+            throw new BancoException.CredencialesInvalidasException("Clave incorrecta");
         }
 
         // Validar titularidad
         Titularidad titularidad = gTitularidades.buscarTitularidad(cliente, cuenta);
         if (titularidad == null) {
-            System.out.println("\nERROR DEPOSITO: El cliente no es titular de esta cuenta");
-            return;
+            throw new BancoException.PermisosDenegadosException("El cliente no es titular de esta cuenta");
         }
 
-        // Validaciones específicas por tipo de usuario
+        // Validar permisos específicos por tipo de usuario
         if (usuarioActual instanceof Cliente) {
             Cliente clienteActual = (Cliente) usuarioActual;
-            // Un cliente solo puede depositar en sus propias cuentas
             if (clienteActual.getDni() != cliente.getDni()) {
-                System.out.println("\nERROR DEPOSITO: Solo puedes depositar en tus propias cuentas");
-                return;
+                throw new BancoException.PermisosDenegadosException("Solo puedes depositar en tus propias cuentas");
             }
         }
 
-        // Procesar DEPOSITO
+        // Procesar depósito
         Deposito deposito;
         if (usuarioActual instanceof Empleado) {
             deposito = new Deposito(cliente, (Empleado) usuarioActual, cuenta, montoDeposito, contadorIdTransaccion);
@@ -109,27 +94,19 @@ public class GestorTransacciones {
         listaTransacciones.add(deposito);
         contadorIdTransaccion++;
 
-        System.out.println("\nDEPOSITO EXITOSO");
-        System.out.println(deposito);
+        return deposito;
     }
 
-
-
-
-
-
-
-    public void procesarRetiro(Usuario usuarioActual, String numeroCuenta, String monto, String dniCliente, String claveCuenta) {
-        // Validar permisos básicos
+    // ========== RETIRO ==========
+    public Retiro procesarRetiro(Usuario usuarioActual, String numeroCuenta, String monto, 
+                                 String dniCliente, String claveCuenta) throws BancoException {
+        
+        // Validar permisos
         if (!(usuarioActual instanceof Cliente) && 
             !(usuarioActual instanceof Empleado) && 
             !(usuarioActual instanceof Admin)) {
-            System.out.println("\nERROR: Usuario no autorizado");
-            return;
+            throw new BancoException.PermisosDenegadosException("Usuario no autorizado para realizar retiros");
         }
-        System.out.println("\n════════════════════════════════════");
-        System.out.println("                RETIRO              ");
-        System.out.println("════════════════════════════════════");
 
         // Validar y parsear datos
         int numCuenta = validarStringNumericoInt(numeroCuenta);
@@ -138,63 +115,52 @@ public class GestorTransacciones {
         int clave = validarStringNumericoInt(claveCuenta);
 
         if (numCuenta == -1) {
-            System.out.println("\nERROR RETIRO: Número de cuenta inválido");
-            return;
+            throw new BancoException.ValidacionException("Número de cuenta debe ser numérico");
         }
         if (montoRetiro <= 0) {
-            System.out.println("\nERROR RETIRO: Monto debe ser mayor a 0");
-            return;
+            throw new BancoException.ValidacionException("El monto debe ser mayor a 0");
         }
         if (dniCl == -1) {
-            System.out.println("\nERROR RETIRO: DNI del cliente inválido");
-            return;
+            throw new BancoException.ValidacionException("DNI debe ser numérico");
         }
         if (clave == -1 || clave < 1000 || clave > 9999) {
-            System.out.println("\nERROR RETIRO: Clave debe ser de 4 dígitos");
-            return;
+            throw new BancoException.ValidacionException("La clave debe tener 4 dígitos");
         }
 
         // Buscar cuenta y cliente
         Cuenta cuenta = gCuentas.buscarCuenta(numCuenta);
-        Cliente cliente = gClientes.buscarCliente(dniCl);
-
         if (cuenta == null) {
-            System.out.println("\nERROR RETIRO: Cuenta no encontrada");
-            return;
-        }
-        if (cliente == null) {
-            System.out.println("\nERROR RETIRO: Cliente no encontrado");
-            return;
+            throw new BancoException.RecursoNoEncontradoException("Cuenta no encontrada");
         }
 
-        // Validar clave de la cuenta
+        Cliente cliente = gClientes.buscarCliente(dniCl);
+        if (cliente == null) {
+            throw new BancoException.RecursoNoEncontradoException("Cliente no encontrado");
+        }
+
+        // Validar clave
         if (cuenta.getClave() != clave) {
-            System.out.println("\nERROR RETIRO: Clave incorrecta");
-            return;
+            throw new BancoException.CredencialesInvalidasException("Clave incorrecta");
         }
 
         // Validar titularidad
         Titularidad titularidad = gTitularidades.buscarTitularidad(cliente, cuenta);
         if (titularidad == null) {
-            System.out.println("\nERROR RETIRO: El cliente no es titular de esta cuenta");
-            return;
+            throw new BancoException.PermisosDenegadosException("El cliente no es titular de esta cuenta");
         }
 
         // Validar saldo suficiente
         if (cuenta.getSaldo() < montoRetiro) {
-            System.out.println("\nERROR RETIRO: Saldo insuficiente");
-            System.out.println("Saldo disponible: S/" + cuenta.getSaldo());
-            return;
+            throw new BancoException.SaldoInsuficienteException(
+                "Saldo insuficiente. Disponible: S/" + String.format("%.2f", cuenta.getSaldo())
+            );
         }
 
-        // Validaciones específicas por tipo de usuario
+        // Validar permisos específicos
         if (usuarioActual instanceof Cliente) {
             Cliente clienteActual = (Cliente) usuarioActual;
-            
-            // Un cliente solo puede retirar de sus propias cuentas
             if (clienteActual.getDni() != cliente.getDni()) {
-                System.out.println("\nERROR RETIRO: Solo puedes retirar de tus propias cuentas");
-                return;
+                throw new BancoException.PermisosDenegadosException("Solo puedes retirar de tus propias cuentas");
             }
         }
 
@@ -212,29 +178,18 @@ public class GestorTransacciones {
         listaTransacciones.add(retiro);
         contadorIdTransaccion++;
 
-        System.out.println("\n✓ RETIRO EXITOSO");
-        System.out.println(retiro);
+        return retiro;
     }
 
-
-
-
-    // -- METODO TRANSFERENCIA -- (Empleado y Admin tienen acceso)
-
-    
-    
-    public void procesarTransferencia(Empleado usuarioActual, String numeroCuentaOrigen, String numeroCuentaDestino, String monto, String dniCliente, String claveCuenta) {
+    // ========== TRANSFERENCIA ==========
+    public Transferencia procesarTransferencia(Empleado usuarioActual, String numeroCuentaOrigen, 
+                                               String numeroCuentaDestino, String monto, 
+                                               String dniCliente, String claveCuenta) throws BancoException {
         
         // Validar permisos
-        if (!(usuarioActual instanceof Empleado) && 
-            !(usuarioActual instanceof Admin)) {
-            System.out.println("\nERROR: Usuario no autorizado");
-            return;
+        if (!(usuarioActual instanceof Empleado) && !(usuarioActual instanceof Admin)) {
+            throw new BancoException.PermisosDenegadosException("Solo empleados y administradores pueden procesar transferencias");
         }
-
-        System.out.println("\n════════════════════════════════════");
-        System.out.println("             TRANSACCION            ");
-        System.out.println("════════════════════════════════════");
 
         // Validar y parsear datos
         int numCuentaOrigen = validarStringNumericoInt(numeroCuentaOrigen);
@@ -244,62 +199,55 @@ public class GestorTransacciones {
         int clave = validarStringNumericoInt(claveCuenta);
 
         if (numCuentaOrigen == -1 || numCuentaDestino == -1) {
-            System.out.println("\nERROR TRANSFERENCIA: Números de cuenta inválidos");
-            return;
+            throw new BancoException.ValidacionException("Los números de cuenta deben ser numéricos");
         }
         if (numCuentaOrigen == numCuentaDestino) {
-            System.out.println("\nERROR TRANSFERENCIA: No puedes transferir a la misma cuenta");
-            return;
+            throw new BancoException.ValidacionException("No puedes transferir a la misma cuenta");
         }
         if (montoTransf <= 0) {
-            System.out.println("\nERROR TRANSFERENCIA: Monto debe ser mayor a 0");
-            return;
+            throw new BancoException.ValidacionException("El monto debe ser mayor a 0");
         }
         if (dniCl == -1) {
-            System.out.println("\nERROR TRANSFERENCIA: DNI inválido");
-            return;
+            throw new BancoException.ValidacionException("DNI debe ser numérico");
         }
         if (clave == -1 || clave < 1000 || clave > 9999) {
-            System.out.println("\nERROR TRANSFERENCIA: Clave debe ser de 4 dígitos");
-            return;
+            throw new BancoException.ValidacionException("La clave debe tener 4 dígitos");
         }
 
-        // Buscar cuentas
+        // Buscar cuentas y cliente
         Cuenta cuentaOrigen = gCuentas.buscarCuenta(numCuentaOrigen);
         Cuenta cuentaDestino = gCuentas.buscarCuenta(numCuentaDestino);
-        Cliente cliente = gClientes.buscarCliente(dniCl);
-
+        
         if (cuentaOrigen == null || cuentaDestino == null) {
-            System.out.println("\nERROR TRANSFERENCIA: Una o ambas cuentas no existen");
-            return;
+            throw new BancoException.RecursoNoEncontradoException("Una o ambas cuentas no existen");
         }
+
+        Cliente cliente = gClientes.buscarCliente(dniCl);
         if (cliente == null) {
-            System.out.println("\nERROR TRANSFERENCIA: Cliente no encontrado");
-            return;
+            throw new BancoException.RecursoNoEncontradoException("Cliente no encontrado");
         }
 
         // Validar clave
         if (cuentaOrigen.getClave() != clave) {
-            System.out.println("\nERROR TRANSFERENCIA: Clave incorrecta");
-            return;
+            throw new BancoException.CredencialesInvalidasException("Clave incorrecta");
         }
 
-        // Validar titularidad de cuenta origen
+        // Validar titularidad
         Titularidad titularidadOrigen = gTitularidades.buscarTitularidad(cliente, cuentaOrigen);
         if (titularidadOrigen == null) {
-            System.out.println("\nERROR TRANSFERENCIA: No eres titular de la cuenta origen");
-            return;
+            throw new BancoException.PermisosDenegadosException("El cliente no es titular de la cuenta origen");
         }
 
         // Validar saldo
         if (cuentaOrigen.getSaldo() < montoTransf) {
-            System.out.println("\nERROR TRANSFERENCIA: Saldo insuficiente");
-            System.out.println("Saldo disponible: S/" + cuentaOrigen.getSaldo());
-            return;
+            throw new BancoException.SaldoInsuficienteException(
+                "Saldo insuficiente. Disponible: S/" + String.format("%.2f", cuentaOrigen.getSaldo())
+            );
         }
 
-         Transferencia transferencia = new Transferencia(cliente, usuarioActual, cuentaOrigen, cuentaDestino, montoTransf, contadorIdTransaccion);
-        
+        // Procesar transferencia
+        Transferencia transferencia = new Transferencia(cliente, usuarioActual, cuentaOrigen, 
+                                                       cuentaDestino, montoTransf, contadorIdTransaccion);
 
         transferencia.procesar();
         cliente.añadirTransaccion(transferencia);
@@ -308,156 +256,87 @@ public class GestorTransacciones {
         listaTransacciones.add(transferencia);
         contadorIdTransaccion++;
 
-        System.out.println("\n✓ TRANSFERENCIA EXITOSA");
-        System.out.println(transferencia);
-        System.out.println("Saldo cuenta origen: S/" + cuentaOrigen.getSaldo());
-        System.out.println("Saldo cuenta destino: S/" + cuentaDestino.getSaldo());
+        return transferencia;
     }
 
-
-
-
-
-
-    // ========== CONSULTAR MOVIMIENTOS ==========
-    
-    public void mostrarMovimientosCuenta(Usuario usuarioActual, String numeroCuenta, String dniCliente) {
+    // ========== CONSULTAR MOVIMIENTOS DE CUENTA ==========
+    public ArrayList<Transaccion> obtenerMovimientosCuenta(Usuario usuarioActual, String numeroCuenta, 
+                                                           String dniCliente) throws BancoException {
         int numCuenta = validarStringNumericoInt(numeroCuenta);
         int dniCl = validarStringNumericoInt(dniCliente);
 
-        System.out.println("\n════════════════════════════════════");
-        System.out.println("        MOVIMIENTOS DE CUENTA       ");
-        System.out.println("════════════════════════════════════");
-
         if (numCuenta == -1) {
-            System.out.println("\nERROR: Número de cuenta inválido");
-            return;
+            throw new BancoException.ValidacionException("Número de cuenta debe ser numérico");
         }
         if (dniCl == -1) {
-            System.out.println("\nERROR: DNI inválido");
-            return;
+            throw new BancoException.ValidacionException("DNI debe ser numérico");
         }
 
         Cuenta cuenta = gCuentas.buscarCuenta(numCuenta);
-        Cliente cliente = gClientes.buscarCliente(dniCl);
-
         if (cuenta == null) {
-            System.out.println("\nERROR: Cuenta no encontrada");
-            return;
+            throw new BancoException.RecursoNoEncontradoException("Cuenta no encontrada");
         }
+
+        Cliente cliente = gClientes.buscarCliente(dniCl);
         if (cliente == null) {
-            System.out.println("\nERROR: Cliente no encontrado");
-            return;
+            throw new BancoException.RecursoNoEncontradoException("Cliente no encontrado");
         }
 
         // Validar permisos
         if (usuarioActual instanceof Cliente) {
             Cliente clienteActual = (Cliente) usuarioActual;
             if (clienteActual.getDni() != cliente.getDni()) {
-                System.out.println("\nERROR: Solo puedes ver tus propios movimientos");
-                return;
+                throw new BancoException.PermisosDenegadosException("Solo puedes ver tus propios movimientos");
             }
         }
 
         // Validar titularidad
         Titularidad titularidad = gTitularidades.buscarTitularidad(cliente, cuenta);
         if (titularidad == null) {
-            System.out.println("\nERROR: El cliente no es titular de esta cuenta");
-            return;
+            throw new BancoException.PermisosDenegadosException("El cliente no es titular de esta cuenta");
         }
 
-        // Mostrar movimientos
-        System.out.println("\n╔════════════════════════════════════════╗");
-        System.out.println("║     MOVIMIENTOS DE LA CUENTA " + numCuenta + "     ║");
-        System.out.println("╚════════════════════════════════════════╝");
-        System.out.println("Titular: " + cliente.getNombres());
-        System.out.println("Saldo actual: S/" + cuenta.getSaldo());
-        System.out.println("\n--- HISTORIAL DE TRANSACCIONES ---");
-
-        if (cuenta.getTransacciones().isEmpty()) {
-            System.out.println("No hay transacciones registradas en la cuenta");
-        } else {
-            for (Transaccion t : cuenta.getTransacciones()) {
-                System.out.println("\n" + t);
-            }
-        }
+        return new ArrayList<>(cuenta.getTransacciones());
     }
 
-
-    public void mostrarMovimientosCliente(Usuario usuarioActual, String dniCliente) {
+    // ========== CONSULTAR MOVIMIENTOS DE CLIENTE ==========
+    public ArrayList<Transaccion> obtenerMovimientosCliente(Usuario usuarioActual, 
+                                                            String dniCliente) throws BancoException {
         int dni = validarStringNumericoInt(dniCliente);
 
-        System.out.println("\n════════════════════════════════════");
-        System.out.println("        MOVIMIENTOS DE CLIENTE      ");
-        System.out.println("════════════════════════════════════");
-
-        if(dni==-1) {
-            System.out.println("\nERROR MOSTRAR MOVIMIENTOS CLIENTE: Dni no valido");
-            return;
+        if (dni == -1) {
+            throw new BancoException.ValidacionException("DNI debe ser numérico");
         }
 
-        Cliente clienteL = gClientes.buscarCliente(dni);
-
-        if (clienteL==null) {
-            System.out.println("\nERROR MOSTRAR MOVIMIENTOS CLIENTE: Cliente no existe");
-            return;
+        Cliente cliente = gClientes.buscarCliente(dni);
+        if (cliente == null) {
+            throw new BancoException.RecursoNoEncontradoException("Cliente no encontrado");
         }
 
+        // Validar permisos
         if (usuarioActual instanceof Cliente) {
-            if (usuarioActual.getDni() != clienteL.getDni()) {
-                System.out.println("\nERROR MOSTRAR MOVIEMIENTOS CLIENTE: Dni no correspondiente");
-                return;
+            if (usuarioActual.getDni() != cliente.getDni()) {
+                throw new BancoException.PermisosDenegadosException("Solo puedes ver tus propios movimientos");
             }
         }
 
-        listarMovimientosCliente(clienteL);
+        return new ArrayList<>(cliente.getTransaccionesCliente());
     }
 
-
-
-    public void listarMovimientosCliente(Cliente cliente) {
-
-        ArrayList<Transaccion> clTransacciones = cliente.getTransaccionesCliente();
-
-        if (clTransacciones.isEmpty()) {
-            System.out.println("No hay transacciones del cliente registradas en el sistema");
-        }
-        else {
-            for (Transaccion transaccion : clTransacciones) {
-                System.out.println("\n" + transaccion);
-            }
-        }
-    }
-
-
-    // Ver todas las transacciones (solo Admin)
-    public void listarTodasTransacciones(Usuario usuarioActual) {
+    // ========== VER TODAS LAS TRANSACCIONES (Solo Admin) ==========
+    public ArrayList<Transaccion> obtenerTodasTransacciones(Usuario usuarioActual) throws BancoException {
         if (!(usuarioActual instanceof Admin)) {
-            System.out.println("\nERROR: Solo los administradores pueden ver todas las transacciones");
-            return;
+            throw new BancoException.PermisosDenegadosException("Solo administradores pueden ver todas las transacciones");
         }
 
-        System.out.println("\n╔════════════════════════════════════════╗");
-        System.out.println("║         TODAS LAS TRANSACCIONES        ║");
-        System.out.println("╚════════════════════════════════════════╝");
-
-        if (listaTransacciones.isEmpty()) {
-            System.out.println("No hay transacciones registradas en el sistema");
-        } 
-        else {
-            for (Transaccion transaccion : listaTransacciones) {
-                System.out.println("\n" + transaccion);
-                System.out.println("-".repeat(50));
-            }
-            System.out.println("\nTotal de transacciones: " + listaTransacciones.size());
-        }
+        return new ArrayList<>(listaTransacciones);
     }
 
-    // ========== MÉTODOS AUXILIARES ==========
+    // ========== MÉTODOS AUXILIARES PRIVADOS ==========
     
     private int validarStringNumericoInt(String numero) {
         try {
-            return Integer.parseInt(numero);
+            return Integer.parseInt(numero.trim());
         } catch (Exception e) {
             return -1;
         }
@@ -465,15 +344,17 @@ public class GestorTransacciones {
 
     private double validarStringNumericoDouble(String numero) {
         try {
-            double valor = Double.parseDouble(numero);
+            double valor = Double.parseDouble(numero.trim());
             return valor > 0 ? valor : -1;
         } catch (Exception e) {
             return -1;
         }
     }
 
+    // ========== GETTERS ==========
+    
     public ArrayList<Transaccion> getListaTransacciones() {
-        return listaTransacciones;
+        return new ArrayList<>(listaTransacciones);
     }
 
     public int getContadorIdTransaccion() {

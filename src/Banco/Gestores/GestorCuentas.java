@@ -1,11 +1,9 @@
-package Gestores;
+package Banco.Gestores;
 
+import Banco.BancoExceptions.BancoException;
+import ClasesBase.*;
+import Gestores.*;
 import java.util.*;
-
-import ClasesBase.Cliente;
-import ClasesBase.Cuenta;
-import ClasesBase.Titularidad;
-import ClasesBase.Usuario;
 
 
 public class GestorCuentas {
@@ -23,33 +21,25 @@ public class GestorCuentas {
 
     // -- METODO ABRIR CUENTA, CREAR PRIMERA TITULARIDAD --
 
-    public void abrirCuenta(String dni, String clave, String tipo) {
-
-        System.out.println("\n════════════════════════════════════");
-        System.out.println("         CREACION DE CUENTA         ");
-        System.out.println("════════════════════════════════════");
+    public Cuenta abrirCuenta(String dni, String clave, String tipo) throws BancoException {
 
         int dniCliente = validarStringNumericoInt(dni);
         int claveCuenta = validarStringNumericoInt(clave);
         
         if (dniCliente == -1) {
-            System.out.println("\nERROR CREACION DE CUENTA: DNI solo debe tener caracteres numericos");
-            return;
+            throw new BancoException.ValidacionException("DNI solo debe tener caracteres numericos");
         }
 
         Cliente cliente = gClientes.buscarCliente(dniCliente);
 
         if (cliente==null) {
-            System.out.println("\nERROR CREACION DE CUENTA: Usuario no encontrado ");
-            return;
+            throw new BancoException.RecursoNoEncontradoException("Usuario no encontrado ");
         }
         if (!validarStringNoVacio(tipo)) {
-            System.out.println("\nERROR CREACION DE CUENTA: Tipo de cuenta no debe estar vacio ");
-            return;
+            throw new BancoException.ValidacionException("Tipo de cuenta no debe estar vacio ");
         }
         if (claveCuenta<1000 || claveCuenta>9999) {
-            System.out.println("\nERROR CREACION DE CUENTA: CLAVE debe tener solo 4 digitos");
-            return;
+            throw new BancoException.ValidacionException("CLAVE debe tener solo 4 digitos");
         }
 
         Cuenta cuenta = new Cuenta(contadorNroCuenta, tipo, 0, claveCuenta);
@@ -64,15 +54,14 @@ public class GestorCuentas {
         
         System.out.println("\n"+cuenta);
         System.out.println("\n"+nTitularidad);
+        
+        return cuenta;
 
     }
 
     // -- ELIMINAR CUENTA --
 
-    public void eliminarCuenta(String dni, String num, String clave) {
-        System.out.println("\n════════════════════════════════════");
-        System.out.println("        ELIMINACION DE CUENTA       ");
-        System.out.println("════════════════════════════════════");
+    public boolean eliminarCuenta(String dni, String num, String clave) throws BancoException {
 
         // Parseando argumentos ingresados 
         int numCuenta = validarStringNumericoInt(num);
@@ -80,12 +69,10 @@ public class GestorCuentas {
         int claveCuenta = validarStringNumericoInt(clave);
 
         if (numCuenta==-1) {
-            System.out.println("\nERROR ELIMINACION DE CUENTA: Formato de numero de cuenta solo deben de ser numeros"); 
-            return;
+            throw new BancoException.ValidacionException("Formato de numero de cuenta solo deben de ser numeros"); 
         }
         if (dniCliente==-1) {
-            System.out.println("\nERROR ELIMINACION DE CUENTA: Formato de DNI solo deben de ser numeros"); 
-            return;
+            throw new BancoException.ValidacionException("Formato de DNI solo deben de ser numeros"); 
         }
         
         // Validando existencia de cliente y cuenta
@@ -93,29 +80,24 @@ public class GestorCuentas {
         Cuenta cuenta = buscarCuenta(numCuenta);
 
         if (cliente==null) {
-            System.out.println("\nERROR ELIMINACION DE CUENTA: Cliente no registrado en el sistema"); 
-            return;
+            throw new BancoException.RecursoNoEncontradoException("Cliente no registrado en el sistema"); 
         }
         if (cuenta==null) {
-            System.out.println("\nERROR ELIMINACION DE CUENTA: Cuenta no registrada en el sistema"); 
-            return;
+            throw new BancoException.RecursoNoEncontradoException("Cuenta no registrada en el sistema"); 
         }
 
         // Validando titularidad relacionada entre cuenta y cliente
         Titularidad titularidadCl = gTitularidades.buscarTitularidad(cliente, cuenta);
         if (titularidadCl==null) {
-            System.out.println("\nERROR ELIMINACION DE CUENTA: NO EXISTE TITULARIDAD ASOCIADA CON ESTA CUENTA"); 
-            return;
+            throw new BancoException.RecursoNoEncontradoException("NO EXISTE TITULARIDAD ASOCIADA CON ESTA CUENTA"); 
         }
 
         // Validando clave para eliminacion
         if (claveCuenta==-1) {
-            System.out.println("\nERROR ELIMINACION DE CUENTA: Formato de contraseña de cuenta solo son 4 numeros"); 
-            return;
+            throw new BancoException.ValidacionException("Formato de contraseña de cuenta solo son 4 numeros"); 
         }
         if (cuenta.getClave()!=claveCuenta) {
-            System.out.println("\nERROR ELIMINACION DE CUENTA: Clave incorrecta"); 
-            return;
+            throw new BancoException.PermisosDenegadosException("Clave incorrecta"); 
         }
 
         // Se elimina las titularidades del sistema
@@ -123,25 +105,21 @@ public class GestorCuentas {
             gTitularidades.eliminarTitularidad(titularidad);    
         }
         
-        System.out.println("\n"+cuenta);
         listaCuentas.remove(cuenta);
+        return true;
     }
 
 
 
     // -- MOSTRAR CUENTA --
 
-    public void mostrarCuenta(Usuario usuarioActual, String numeroCuenta) {
-        System.out.println("\n════════════════════════════════════");
-        System.out.println("           MOSTRAR CUENTA           ");
-        System.out.println("════════════════════════════════════");
-        
+    public Cuenta mostrarCuenta(Usuario usuarioActual, String numeroCuenta) throws BancoException {
+
         int numCuenta = validarStringNumericoInt(numeroCuenta);
         Cuenta cuenta = buscarCuenta(numCuenta);
         
         if (cuenta==null) {
-            System.out.println("\nERROR MOSTRAR CUENTA: La cuenta ingresada no existe");
-            return;
+            throw new BancoException.ValidacionException("La cuenta ingresada no existe");
         }
 
         if (usuarioActual instanceof Cliente) {
@@ -149,67 +127,44 @@ public class GestorCuentas {
             Titularidad titularidad = gTitularidades.buscarTitularidad(cliente, cuenta);
 
             if (titularidad==null) {
-                System.out.println("\nERROR MOSTRAR CUENTA: No existe titularidad con esta cuenta");
-                return;
+                throw new BancoException.RecursoNoEncontradoException("No existe titularidad con esta cuenta");
             }
             else {
-                System.out.println("\n"+cuenta);
+                return cuenta;
             }
         }
         
         else {
-            System.out.println("\n"+cuenta);
+            return cuenta;
         }
     }
 
 
     // -- MOSTRAR CUENTAS --
 
-    public void mostrarCuentas() {
-        System.out.println("\n════════════════════════════════════");
-        System.out.println("          CUENTAS BANCARIAS         ");
-        System.out.println("════════════════════════════════════");
-
-        if (listaCuentas.isEmpty()) {
-            System.out.println("\nNO HAY CUENTAS REGISTRADAS");
-        }
-        else {
-            for (Cuenta cuenta : listaCuentas) {
-                System.out.println("\n"+cuenta);
-            }
-        }
+    public ArrayList<Cuenta> mostrarCuentas() {
+        return listaCuentas;
     }
 
     // -- MOSTRAR CUENTAS DE CLIENTE --
 
-    public void mostrarCuentasCliente(Usuario usuarioActual, String dniCliente) {
-        System.out.println("\n════════════════════════════════════");
-        System.out.println("          CUENTAS DE CLIENTE        ");
-        System.out.println("════════════════════════════════════");
+    public ArrayList<Titularidad> mostrarCuentasCliente(Usuario usuarioActual, String dniCliente) throws BancoException {
 
         int dniCl = validarStringNumericoInt(dniCliente);
         Cliente cliente = gClientes.buscarCliente(dniCl);
         
         if (cliente==null) {
-            System.out.println("\nERROR MOSTRAR CUENTAS DE CLIENTE: No hay registro de cliente con DNI ingresado");
-            return;
+            throw new BancoException.RecursoNoEncontradoException("No hay registro de cliente con DNI ingresado");
         }
         if (usuarioActual instanceof Cliente) {
             if (usuarioActual.getDni() != dniCl) {
-                System.out.println("\nERROR MOSTRAR CUENTSA DE CLIENTE: Permisos no concedidos, solo puedes ver tus cuentas");
-                return;
+                throw new BancoException.PermisosDenegadosException("Permisos no concedidos, solo puedes ver tus cuentas");
             }
         }
 
         ArrayList<Titularidad> titularidadsCliente = gTitularidades.listarTitularidadesDeCliente(cliente);
-        if (titularidadsCliente.isEmpty()) {
-            System.out.println("\nEl cliente no tiene cuentas registradas");
-        }
-        else  {
-            for (Titularidad titularidad : gTitularidades.listarTitularidadesDeCliente(cliente)) {
-                System.out.println("\n"+titularidad.getCuenta());
-            }
-        }
+        
+        return titularidadsCliente;
     }
 
 
@@ -236,8 +191,8 @@ public class GestorCuentas {
     }
 
     public boolean validarStringNoVacio(String palabra) {
-        if (palabra == null || palabra.trim().isEmpty()) return false;
-        return true;
+        return (palabra == null || palabra.trim().isEmpty());
     }
 
 }
+

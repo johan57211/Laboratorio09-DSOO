@@ -1,5 +1,6 @@
-package Gestores;
+package Banco.Gestores;
 
+import Banco.BancoExceptions.BancoException;
 import java.util.ArrayList;
 
 import ClasesBase.Cliente;
@@ -23,59 +24,45 @@ public class GestorTitularidades {
     public void setGestorCuentas(GestorCuentas gCuentas) {
         this.gCuentas = gCuentas;
     }
+
     public void setGestorClientes(GestorClientes gClientes) {
         this.gClientes = gClientes;
     }
-    
-
-
-
-
 
     // -- AGREGAR TITULAR A CUENTA --
+    public Titularidad agregarTitularidad(String dni, String numeroCuenta) throws BancoException {
 
-	public void agregarTitularidad(String dni, String numeroCuenta) {
-		System.out.println("\n════════════════════════════════════");
-        System.out.println("           AGREGAR TITULAR          ");
-        System.out.println("════════════════════════════════════");
-        
         int dniCliente = validarStringNumericoInt(dni);
-		int numeroCuentaCl = validarStringNumericoInt(numeroCuenta);
-        
+        int numeroCuentaCl = validarStringNumericoInt(numeroCuenta);
+
         //Validaciones
-        if (dniCliente==-1) {
-            System.out.println("\nERROR ASIGNACION TITULARIDAD: Dni solo debe contener numeros");
-            return;
+        if (dniCliente == -1) {
+            throw new BancoException.ValidacionException("Dni solo debe contener numeros");
         }
-        
-        if (numeroCuentaCl==-1) {
-            System.out.println("\nERROR ASIGNACION TITULARIDAD: Numero de Cuenta solo debe contener numeros");
-            return;
+
+        if (numeroCuentaCl == -1) {
+            throw new BancoException.ValidacionException("Numero de Cuenta solo debe contener numeros");
         }
 
         Cliente clienteP = gClientes.buscarCliente(dniCliente);
         Cuenta cuentaP = gCuentas.buscarCuenta(numeroCuentaCl);
 
-        if (clienteP==null) {
-            System.out.println("\nERROR ASIGNACION TITULARIDAD: Cliente no registrado en el sistema");
-            return;
+        if (clienteP == null) {
+            throw new BancoException.RecursoNoEncontradoException("Cliente no registrado en el sistema");
         }
-        if (cuentaP==null) {
-            System.out.println("\nERROR ASIGNACION TITULARIDAD: Cuenta no registrada en el sistema");
-            return;
+        if (cuentaP == null) {
+            throw new BancoException.RecursoNoEncontradoException("Cuenta no registrada en el sistema");
         }
-        if (buscarTitularidad(clienteP, cuentaP)!=null) {
-            System.out.println("\nERROR ASIGNACION TITULARIDAD: Ya existe una titularidad con esta cuenta");
-            return;
+        if (buscarTitularidad(clienteP, cuentaP) != null) {
+            throw new BancoException.DuplicadoException("Ya existe una titularidad con esta cuenta");
         }
 
         Titularidad titularidad = new Titularidad("Secundario", clienteP, cuentaP, contadorIds);
         contadorIds++;
 
-        System.out.println(titularidad);
         listaTitularidades.add(titularidad);
-	}
-    
+        return titularidad;
+    }
 
     // -- METODO PARA CREAR TITULARIDAD CUANDO SE ABRE UNA CUENTA --
     public void agregarPrimeraTitularidad(Titularidad nTitularidad) {
@@ -83,85 +70,46 @@ public class GestorTitularidades {
         contadorIds++;
     }
 
-    // -- MOSTRAR TITULARES DE CUENTA --
-
-    public void mostrarTitularesDeCuenta(String numero) {
-        System.out.println("\n════════════════════════════════════");
-        System.out.println("         TITULARES DE CUENTA        ");
-        System.out.println("════════════════════════════════════");
-        
-        int numeroCuenta = validarStringNumericoInt(numero);
-
-        Cuenta cuenta = gCuentas.buscarCuenta(numeroCuenta);
-        
-        if (cuenta==null) {
-            System.out.println("\nERROR MOSTRAR TITULARES DE CUENTA: No se encontro cuenta con el numero de cuenta ingresado");
-            return;
-        }
-
-        ArrayList<Titularidad> titularesCuenta = listarTitularesDeCuenta(cuenta);
-
-        if (titularesCuenta.isEmpty()) {
-            System.out.println("-- No existen titulares en esta cuenta -- ??");
-        }
-        else {
-            for (Titularidad titularidad : titularesCuenta) {
-                System.out.println("\n"+titularidad);
-            }
-        }
-    }
 
     // Elimina una titularidad del registro
-    public void eliminarTitularidad(Titularidad titularidad) {listaTitularidades.remove(titularidad);}
-
-
-
-    public void eliminarTitularSecundario() {
-
+    public void eliminarTitularidad(Titularidad titularidad) {
+        listaTitularidades.remove(titularidad);
     }
-
-
-
 
 
     // Busca si hay una titularidad entre un cliente y una cuenta
     public Titularidad buscarTitularidad(Cliente cliente, Cuenta cuenta) {
         for (Titularidad titular : listaTitularidades) {
-            if (titular.getCliente()==cliente && titular.getCuenta()==cuenta) {
+            if (titular.getCliente() == cliente && titular.getCuenta() == cuenta) {
                 return titular;
             }
         }
         return null;
     }
 
-
-
     // Array de las titularidades de un Cliente
-	public ArrayList<Titularidad> listarTitularidadesDeCliente(Cliente cliente) {
-        
+    public ArrayList<Titularidad> listarTitularidadesDeCliente(Cliente cliente) {
+
         ArrayList<Titularidad> titularidadesCliente = new ArrayList<>();
         for (Titularidad titularidad : listaTitularidades) {
-            if (titularidad.getCliente()==cliente) {
+            if (titularidad.getCliente() == cliente) {
                 titularidadesCliente.add(titularidad);
             }
         }
         return titularidadesCliente;
-	}
-
-
+    }
 
     // Array de los titulares de una cuenta
     public ArrayList<Titularidad> listarTitularesDeCuenta(Cuenta cuenta) {
 
         ArrayList<Titularidad> titularidadesCuenta = new ArrayList<>();
         for (Titularidad titularidad : listaTitularidades) {
-            if (titularidad.getCuenta()==cuenta) {
+            if (titularidad.getCuenta() == cuenta) {
                 titularidadesCuenta.add(titularidad);
             }
         }
         return titularidadesCuenta;
     }
-
 
     // Metodos complementarios
     public int getContadorIds() {
@@ -178,5 +126,4 @@ public class GestorTitularidades {
         }
     }
 
-    
 }
