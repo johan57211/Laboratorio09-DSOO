@@ -81,7 +81,6 @@ public class Pnl_Menu_Empleado extends javax.swing.JPanel {
         btnCerrarSesion.addActionListener(this::btnCerrarSesionActionPerformed);
 
         iconoCliente.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        iconoCliente.setForeground(new java.awt.Color(0, 0, 0));
         iconoCliente.setText("Icono Cliente");
 
         nombreCliente.setText("nombre Cliente");
@@ -127,10 +126,10 @@ public class Pnl_Menu_Empleado extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(iconoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nombreCliente)
-                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(iconoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nombreCliente))
+                .addGap(40, 40, 40)
                 .addComponent(btnDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnRetiro, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
