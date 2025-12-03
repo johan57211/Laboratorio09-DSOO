@@ -1,10 +1,17 @@
 
 package InterfazGrafica.panelEmpleado.PanelesMetodos;
 
-public class EmpleadoConsultarInformacion extends javax.swing.JPanel {
+import Banco.ClasesBase.*;
+import Banco.GestorPrincipal.Banco;
 
-    public EmpleadoConsultarInformacion() {
+public class EmpleadoConsultarInformacion extends javax.swing.JPanel {
+    private Banco banco;
+    private Usuario usuarioActual;
+    
+    public EmpleadoConsultarInformacion(Banco banco, Usuario usuarioActual) {
         initComponents();
+        this.banco = banco;
+        this.usuarioActual = usuarioActual;
     }
 
     @SuppressWarnings("unchecked")

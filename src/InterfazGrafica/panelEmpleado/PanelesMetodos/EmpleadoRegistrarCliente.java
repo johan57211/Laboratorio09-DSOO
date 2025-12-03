@@ -1,10 +1,18 @@
 
 package InterfazGrafica.panelEmpleado.PanelesMetodos;
 
-public class EmpleadoRegistrarCliente extends javax.swing.JPanel {
+import Banco.ClasesBase.*;
+import Banco.GestorPrincipal.Banco;
 
-    public EmpleadoRegistrarCliente() {
+public class EmpleadoRegistrarCliente extends javax.swing.JPanel {
+    
+    private Banco banco;
+    private Usuario usuarioActual;
+    
+    public EmpleadoRegistrarCliente(Banco banco, Usuario usuarioActual) {
         initComponents();
+        this.banco = banco;
+        this.usuarioActual = usuarioActual;
     }
 
     

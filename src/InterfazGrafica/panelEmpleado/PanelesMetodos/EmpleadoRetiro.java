@@ -1,10 +1,18 @@
 
 package InterfazGrafica.panelEmpleado.PanelesMetodos;
 
-public class EmpleadoRetiro extends javax.swing.JPanel {
+import Banco.ClasesBase.*;
+import Banco.GestorPrincipal.Banco;
 
-    public EmpleadoRetiro() {
+public class EmpleadoRetiro extends javax.swing.JPanel {
+    
+    private Banco banco;
+    private Usuario usuarioActual;
+    
+    public EmpleadoRetiro(Banco banco, Usuario usuarioActual) {
         initComponents();
+        this.banco = banco;
+        this.usuarioActual = usuarioActual;
     }
 
     @SuppressWarnings("unchecked")

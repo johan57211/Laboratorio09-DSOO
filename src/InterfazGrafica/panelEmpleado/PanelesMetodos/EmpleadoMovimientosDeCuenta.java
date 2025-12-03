@@ -1,10 +1,19 @@
 
-package InterfazGrafica;
+package InterfazGrafica.panelEmpleado.PanelesMetodos;
+
+import Banco.ClasesBase.*;
+import Banco.GestorPrincipal.Banco;
 
 public class EmpleadoMovimientosDeCuenta extends javax.swing.JPanel {
 
-    public EmpleadoMovimientosDeCuenta() {
+    private Banco banco;
+    private Usuario usuarioActual;
+
+
+    public EmpleadoMovimientosDeCuenta(Banco banco, Usuario usuarioActual) {
         initComponents();
+        this.banco = banco;
+        this.usuarioActual = usuarioActual;
     }
 
     @SuppressWarnings("unchecked")

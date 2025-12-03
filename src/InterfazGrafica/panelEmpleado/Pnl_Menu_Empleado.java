@@ -30,12 +30,11 @@ public class Pnl_Menu_Empleado extends javax.swing.JPanel {
 
     private void inicializarPaneles() {
         // Inicializar los subpaneles con el banco y usuario
-        deposito = new EmpleadoDeposito();
-        retiro = new EmpleadoRetiro();
-        registrar = new EmpleadoRegistrarCliente();
-        consultar = new EmpleadoConsultarInformacion();
-        movimientos = new EmpleadoMovimientosDeCuenta();
-
+        deposito = new EmpleadoDeposito(banco, usuario);
+        retiro = new EmpleadoRetiro(banco, usuario);
+        registrar = new EmpleadoRegistrarCliente(banco, usuario);
+        consultar = new EmpleadoConsultarInformacion(banco, usuario);
+        movimientos = new EmpleadoMovimientosDeCuenta(banco, usuario);
     }
 
     @SuppressWarnings("unchecked")
