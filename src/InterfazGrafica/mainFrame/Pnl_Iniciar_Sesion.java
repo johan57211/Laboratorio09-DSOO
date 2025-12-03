@@ -58,32 +58,25 @@ public class Pnl_Iniciar_Sesion extends javax.swing.JPanel {
         jPanel2.add(iconoBanco, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 70, 70));
 
         bancoLabel.setFont(new java.awt.Font("Roboto Condensed", 1, 24)); // NOI18N
-        bancoLabel.setForeground(new java.awt.Color(0, 0, 0));
         bancoLabel.setText("Banco Nacional Cerdita");
         jPanel2.add(bancoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, -1, -1));
 
         userLabel.setBackground(new java.awt.Color(255, 255, 255));
         userLabel.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        userLabel.setForeground(new java.awt.Color(0, 0, 0));
         userLabel.setText("Correo*");
         jPanel2.add(userLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, -1, -1));
 
         sesionLabel.setFont(new java.awt.Font("Segoe UI Semilight", 0, 36)); // NOI18N
-        sesionLabel.setForeground(new java.awt.Color(0, 0, 0));
         sesionLabel.setText("Iniciar Sesion");
         jPanel2.add(sesionLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, -1, -1));
 
-        cargoBox.setBackground(new java.awt.Color(255, 255, 255));
         cargoBox.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
-        cargoBox.setForeground(new java.awt.Color(0, 0, 0));
         cargoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tipo de Usuario", "Administrador", "Empleado", "Cliente" }));
         cargoBox.setBorder(null);
         cargoBox.addActionListener(this::cargoBoxActionPerformed);
         jPanel2.add(cargoBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 150, 30));
 
-        userField.setBackground(new java.awt.Color(255, 255, 255));
         userField.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
-        userField.setForeground(new java.awt.Color(0, 0, 0));
         userField.setBorder(null);
         userField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -94,13 +87,10 @@ public class Pnl_Iniciar_Sesion extends javax.swing.JPanel {
         jPanel2.add(userField, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, 310, 30));
 
         passLabel.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
-        passLabel.setForeground(new java.awt.Color(0, 0, 0));
         passLabel.setText("Contraseña*");
         jPanel2.add(passLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 380, -1, -1));
 
-        passField.setBackground(new java.awt.Color(255, 255, 255));
         passField.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
-        passField.setForeground(new java.awt.Color(0, 0, 0));
         passField.setBorder(null);
         passField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -128,7 +118,7 @@ public class Pnl_Iniciar_Sesion extends javax.swing.JPanel {
         jPanel2.add(avisoError, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 450, 310, 20));
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 0, 510, 700));
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 700));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 690));
     }// </editor-fold>//GEN-END:initComponents
 
     private void cargoBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargoBoxActionPerformed

@@ -2,6 +2,7 @@ package InterfazGrafica.mainFrame;
 
 import Banco.ClasesBase.*;
 import Banco.GestorPrincipal.*;
+import InterfazGrafica.panelAdmin.MenAdmin;
 import InterfazGrafica.panelCliente.Pnl_Menu_Cliente;
 import InterfazGrafica.panelEmpleado.Pnl_Menu_Empleado;
 import java.awt.BorderLayout;
@@ -121,6 +122,8 @@ public class MainFrame extends javax.swing.JFrame {
      * Navegar al menú de administrador (por implementar)
      */
     public void irAMenuAdmin(Usuario usuario) {
+        MenAdmin memuAdmin = new MenAdmin(banco, usuario);
+        contenedorPrincipal.add(memuAdmin, "menuAdministrador");
         JOptionPane.showMessageDialog(this,
                 "Menú de Administrador en desarrollo\nUsuario: " + usuario.getNombres(),
                 "Próximamente",
