@@ -24,8 +24,23 @@ public class Pnl_Menu_Cliente extends javax.swing.JPanel {
         this.usuarioActual = usuarioActual;
         this.vista = new CardLayout();
         vista = (CardLayout) Pnl_vista_principal.getLayout();
+        inicializarPaneles();
         setVisible(true);
     }
+    
+    private void inicializarPaneles() {
+        // Inicializar los subpaneles con el banco y usuario
+        
+        consultarCuenta = new Pnl_ConsultarCuenta(banco, usuarioActual);
+        transferencia = new Pnl_Transferir();
+      
+        
+        // TODO: Si estos paneles necesitan banco/usuario, pásalos en el constructor
+        // Ejemplo: deposito = new EmpleadoDeposito(banco, usuario);
+    }
+    
+    
+    
     /*
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -58,7 +73,7 @@ public class Pnl_Menu_Cliente extends javax.swing.JPanel {
         transferenciaBtn = new javax.swing.JButton();
         
         cerrarSesionBtn = new javax.swing.JButton();
-        nombreEmpleadoLabel = new javax.swing.JLabel();
+        nombreClienteLabel = new javax.swing.JLabel();
         Pnl_vista_principal = new javax.swing.JPanel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -73,11 +88,11 @@ public class Pnl_Menu_Cliente extends javax.swing.JPanel {
         jLabel3.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 110, 110));
 
-        nombreEmpleadoLabel.setFont(new java.awt.Font("Roboto", 1, 14));
-        nombreEmpleadoLabel.setForeground(new java.awt.Color(0, 0, 0));
-        nombreEmpleadoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nombreEmpleadoLabel.setText(usuarioActual.getNombres());
-        jPanel3.add(nombreEmpleadoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 190, 20));
+        nombreClienteLabel.setFont(new java.awt.Font("Roboto", 1, 14));
+        nombreClienteLabel.setForeground(new java.awt.Color(0, 0, 0));
+        nombreClienteLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nombreClienteLabel.setText("Cliente");
+        jPanel3.add(nombreClienteLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 190, 20));
 
         consultarCuentaBtn.setBackground(new java.awt.Color(204, 0, 0));
         consultarCuentaBtn.setFont(new java.awt.Font("Roboto Condensed", 0, 12));
@@ -99,7 +114,7 @@ public class Pnl_Menu_Cliente extends javax.swing.JPanel {
         transferenciaBtn.setBackground(new java.awt.Color(204, 0, 0));
         transferenciaBtn.setFont(new java.awt.Font("Roboto Condensed", 0, 12));
         transferenciaBtn.setForeground(new java.awt.Color(255, 255, 255));
-        transferenciaBtn.setText("Registrar Deposito");
+        transferenciaBtn.setText("Registrar Transferencia");
         transferenciaBtn.setBorderPainted(false);
         transferenciaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         transferenciaBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -141,8 +156,8 @@ public class Pnl_Menu_Cliente extends javax.swing.JPanel {
     }// </editor-fold>
     
     private void transferenciaBtnActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        Pnl_vista_principal.add(transferencia, "deposito");
-        vista.show(Pnl_vista_principal, "deposito");
+        Pnl_vista_principal.add(transferencia, "transferencia");
+        vista.show(Pnl_vista_principal, "transferencia");
         SwingUtilities.updateComponentTreeUI(this);
         this.repaint();
     }                                        
@@ -176,9 +191,7 @@ public class Pnl_Menu_Cliente extends javax.swing.JPanel {
         this.repaint();
     }                                           
 
-                                       
-
-    
+                                      
     private void cerrarSesionBtnMouseEntered(java.awt.event.MouseEvent evt) {
         cerrarSesionBtn.setBackground(new Color(255, 0, 0));
     }
@@ -214,7 +227,7 @@ public class Pnl_Menu_Cliente extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JButton consultarCuentaBtn;
     private javax.swing.JButton transferenciaBtn;
-    private javax.swing.JLabel nombreEmpleadoLabel;
+    private javax.swing.JLabel nombreClienteLabel;
 
 
 
