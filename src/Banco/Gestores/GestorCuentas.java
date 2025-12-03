@@ -10,7 +10,7 @@ public class GestorCuentas {
 
     private GestorTitularidades gTitularidades;
     private GestorClientes gClientes;
-    private int contadorNroCuenta = 100;
+    private int contadorNroCuenta = 10000;
 
     public GestorCuentas(GestorTitularidades gTitularidades, GestorClientes gClientes) {
         this.gTitularidades = gTitularidades;
@@ -190,7 +190,7 @@ public class GestorCuentas {
     }
 
     public boolean validarStringNoVacio(String palabra) {
-        return (palabra == null || palabra.trim().isEmpty());
+        return !(palabra == null || palabra.trim().isEmpty());
     }
 
 }

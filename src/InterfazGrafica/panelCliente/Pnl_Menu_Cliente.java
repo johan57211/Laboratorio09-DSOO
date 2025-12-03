@@ -32,7 +32,7 @@ public class Pnl_Menu_Cliente extends javax.swing.JPanel {
         // Inicializar los subpaneles con el banco y usuario
         
         consultarCuenta = new Pnl_ConsultarCuenta(banco, usuarioActual);
-        transferencia = new Pnl_Transferir();
+        transferencia = new Pnl_Transferir(banco);
       
         
         // TODO: Si estos paneles necesitan banco/usuario, pásalos en el constructor

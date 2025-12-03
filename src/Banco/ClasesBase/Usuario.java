@@ -1,6 +1,7 @@
 package Banco.ClasesBase;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public abstract class Usuario {
     protected String nombres;
@@ -32,6 +33,11 @@ public abstract class Usuario {
     public int getEdad() {return edad;}
     public String getNombres() {return nombres;}
     public String getContraseña() {return contraseña;}
+    public String getFechaApertura() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        return fechaRegistro.format(formatter);
+    }
+    
 
     //Metodo mostrar permisos
 

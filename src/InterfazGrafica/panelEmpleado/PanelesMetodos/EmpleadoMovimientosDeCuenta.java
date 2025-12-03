@@ -84,91 +84,77 @@ public class EmpleadoMovimientosDeCuenta extends javax.swing.JPanel {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0), 3), "Transaccion Encontrada", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Roboto Condensed", 1, 18), new java.awt.Color(0, 0, 0))); // NOI18N
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel8.setBackground(null);
         jLabel8.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Operador");
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, -1, -1));
 
-        jLabel9.setBackground(null);
         jLabel9.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Numero de Transaccion:");
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, -1, -1));
 
-        jLabel10.setBackground(null);
         jLabel10.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Tipo:");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, -1, -1));
 
-        jLabel12.setBackground(null);
         jLabel12.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Fecha:");
         jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, -1, -1));
 
-        numCuentaField.setBackground(null);
         numCuentaField.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
         numCuentaField.setForeground(new java.awt.Color(0, 0, 0));
         numCuentaField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         numCuentaField.addActionListener(this::numCuentaFieldActionPerformed);
         jPanel2.add(numCuentaField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, 170, 30));
 
-        numCuentaField2.setBackground(null);
         numCuentaField2.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
         numCuentaField2.setForeground(new java.awt.Color(0, 0, 0));
         numCuentaField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         numCuentaField2.addActionListener(this::numCuentaField2ActionPerformed);
         jPanel2.add(numCuentaField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 170, 30));
 
-        numCuentaField3.setBackground(null);
         numCuentaField3.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
         numCuentaField3.setForeground(new java.awt.Color(0, 0, 0));
         numCuentaField3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         numCuentaField3.addActionListener(this::numCuentaField3ActionPerformed);
         jPanel2.add(numCuentaField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, 170, 30));
 
-        numCuentaField4.setBackground(null);
         numCuentaField4.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
         numCuentaField4.setForeground(new java.awt.Color(0, 0, 0));
         numCuentaField4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         numCuentaField4.addActionListener(this::numCuentaField4ActionPerformed);
         jPanel2.add(numCuentaField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 170, 30));
 
-        jLabel11.setBackground(null);
         jLabel11.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Monto:");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, -1, -1));
 
-        jLabel13.setBackground(null);
         jLabel13.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Saldo Anterior:");
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, -1, -1));
 
-        jLabel14.setBackground(null);
         jLabel14.setFont(new java.awt.Font("Roboto Condensed", 1, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Saldo Final");
         jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, -1, -1));
 
-        numCuentaField5.setBackground(null);
         numCuentaField5.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
         numCuentaField5.setForeground(new java.awt.Color(0, 0, 0));
         numCuentaField5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         numCuentaField5.addActionListener(this::numCuentaField5ActionPerformed);
         jPanel2.add(numCuentaField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 170, 30));
 
-        numCuentaField6.setBackground(null);
         numCuentaField6.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
         numCuentaField6.setForeground(new java.awt.Color(0, 0, 0));
         numCuentaField6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         numCuentaField6.addActionListener(this::numCuentaField6ActionPerformed);
         jPanel2.add(numCuentaField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, 170, 30));
 
-        numCuentaField7.setBackground(null);
         numCuentaField7.setFont(new java.awt.Font("Roboto Condensed", 0, 18)); // NOI18N
         numCuentaField7.setForeground(new java.awt.Color(0, 0, 0));
         numCuentaField7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));

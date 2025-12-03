@@ -26,7 +26,11 @@ public class Cuenta {
     public void setClave(int clave) {this.clave = clave;}
 
     //GETTERS
-    public LocalDateTime getFechaApertura() {return fechaApertura;}
+    public String getFechaApertura() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        return fechaApertura.format(formatter);
+    }
+    
     public int getNumeroCuenta() {return numeroCuenta;}
     public double getSaldo() {return saldo;}
     public String getTipoCuenta() {return tipoCuenta;}

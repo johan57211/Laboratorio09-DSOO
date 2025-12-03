@@ -169,11 +169,11 @@ private void initComponents() {
 
     public static void main(String args[]) {
 
-    Banco banco = new Banco();
+        Banco banco = new Banco();
 
-    java.awt.EventQueue.invokeLater(() -> {
-        MainFrame frame = new MainFrame(banco);
-        frame.setVisible(true);
+        java.awt.EventQueue.invokeLater(() -> {
+            MainFrame frame = new MainFrame(banco);
+            frame.setVisible(true);
     });
 }
     // Variables declaration - do not modify//GEN-BEGIN:variables

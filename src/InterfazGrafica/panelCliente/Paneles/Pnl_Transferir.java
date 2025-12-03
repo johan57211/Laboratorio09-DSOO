@@ -4,6 +4,9 @@
  */
 package InterfazGrafica.panelCliente.Paneles;
 
+import Banco.BancoExceptions.BancoException;
+import Banco.ClasesBase.Transaccion;
+import Banco.ClasesBase.Transferencia;
 import Banco.ClasesBase.Usuario;
 import Banco.GestorPrincipal.Banco;
 
@@ -18,7 +21,7 @@ public class Pnl_Transferir extends javax.swing.JPanel {
      */
     private Banco banco;
     private Usuario usuarioActual;
-    public Pnl_Transferir() {
+    public Pnl_Transferir(Banco banco) {
         initComponents();
         this.banco = banco;
         this.usuarioActual = usuarioActual;
@@ -49,23 +52,20 @@ public class Pnl_Transferir extends javax.swing.JPanel {
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
         transferir = new javax.swing.JButton();
-        avisoCtaOrigen = new javax.swing.JLabel();
         limpiar = new javax.swing.JButton();
-        avisoCtaOrigen1 = new javax.swing.JLabel();
-        avisoCtaOrigen2 = new javax.swing.JLabel();
-        avisoCtaOrigen3 = new javax.swing.JLabel();
         boletaTransferencia = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        cuentaDestino = new javax.swing.JLabel();
+        cuentaDestinoL = new javax.swing.JLabel();
         numTransaccion = new javax.swing.JLabel();
-        cuentaOrigen = new javax.swing.JLabel();
+        cuentaOrigenL = new javax.swing.JLabel();
         dniCliente = new javax.swing.JLabel();
-        monto = new javax.swing.JLabel();
+        montoL = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
+        avisoFondo = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(204, 0, 0));
 
@@ -80,7 +80,7 @@ public class Pnl_Transferir extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Clave:");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 130, 93, 43));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, 93, 43));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -90,24 +90,24 @@ public class Pnl_Transferir extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Numº Cuenta Destino: ");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 290, 43));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 290, 43));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Monto:");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 50, 93, 43));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 50, 93, 43));
 
         origenEntrada.setBackground(new java.awt.Color(255, 255, 255));
         origenEntrada.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         origenEntrada.setForeground(new java.awt.Color(0, 0, 0));
         origenEntrada.addActionListener(this::origenEntradaActionPerformed);
-        jPanel2.add(origenEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 230, -1));
+        jPanel2.add(origenEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 230, -1));
 
         destinoEntrada.setBackground(new java.awt.Color(255, 255, 255));
         destinoEntrada.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         destinoEntrada.setForeground(new java.awt.Color(0, 0, 0));
         destinoEntrada.addActionListener(this::destinoEntradaActionPerformed);
-        jPanel2.add(destinoEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, 230, -1));
+        jPanel2.add(destinoEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 230, -1));
 
         montoEntrada.setBackground(new java.awt.Color(255, 255, 255));
         montoEntrada.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -117,49 +117,30 @@ public class Pnl_Transferir extends javax.swing.JPanel {
         claveEntrada.setBackground(new java.awt.Color(255, 255, 255));
         claveEntrada.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         claveEntrada.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel2.add(claveEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 140, 169, -1));
+        jPanel2.add(claveEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 110, 169, -1));
 
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 230, 10));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 230, 10));
 
         jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
         jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 90, 170, 10));
 
         jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 170, 169, 10));
+        jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 140, 169, 10));
 
         transferir.setBackground(new java.awt.Color(204, 0, 0));
         transferir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         transferir.setForeground(new java.awt.Color(255, 255, 255));
         transferir.setText("TRANSFERIR");
-        jPanel2.add(transferir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 140, 40));
-
-        avisoCtaOrigen.setBackground(new java.awt.Color(51, 51, 51));
-        avisoCtaOrigen.setForeground(new java.awt.Color(0, 0, 0));
-        avisoCtaOrigen.setText(".");
-        jPanel2.add(avisoCtaOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 100, 170, -1));
+        transferir.addActionListener(this::transferirActionPerformed);
+        jPanel2.add(transferir, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 160, 140, 40));
 
         limpiar.setBackground(new java.awt.Color(204, 0, 0));
         limpiar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         limpiar.setForeground(new java.awt.Color(255, 255, 255));
         limpiar.setText("LIMPIAR");
         limpiar.addActionListener(this::limpiarActionPerformed);
-        jPanel2.add(limpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 90, 40));
-
-        avisoCtaOrigen1.setBackground(new java.awt.Color(51, 51, 51));
-        avisoCtaOrigen1.setForeground(new java.awt.Color(0, 0, 0));
-        avisoCtaOrigen1.setText(".");
-        jPanel2.add(avisoCtaOrigen1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, 230, -1));
-
-        avisoCtaOrigen2.setBackground(new java.awt.Color(51, 51, 51));
-        avisoCtaOrigen2.setForeground(new java.awt.Color(0, 0, 0));
-        avisoCtaOrigen2.setText(".");
-        jPanel2.add(avisoCtaOrigen2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 230, -1));
-
-        avisoCtaOrigen3.setBackground(new java.awt.Color(51, 51, 51));
-        avisoCtaOrigen3.setForeground(new java.awt.Color(0, 0, 0));
-        avisoCtaOrigen3.setText(".");
-        jPanel2.add(avisoCtaOrigen3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 180, 170, -1));
+        jPanel2.add(limpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 160, 90, 40));
 
         boletaTransferencia.setBackground(new java.awt.Color(255, 255, 255));
         boletaTransferencia.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 0, 0), 3, true), "Transferencia Exitosa", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18), new java.awt.Color(0, 0, 0))); // NOI18N
@@ -189,12 +170,12 @@ public class Pnl_Transferir extends javax.swing.JPanel {
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Monto:");
 
-        cuentaDestino.setBackground(new java.awt.Color(0, 153, 153));
-        cuentaDestino.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        cuentaDestino.setForeground(new java.awt.Color(0, 0, 0));
-        cuentaDestino.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        cuentaDestino.setText(".");
-        cuentaDestino.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        cuentaDestinoL.setBackground(new java.awt.Color(0, 153, 153));
+        cuentaDestinoL.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cuentaDestinoL.setForeground(new java.awt.Color(0, 0, 0));
+        cuentaDestinoL.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        cuentaDestinoL.setText(".");
+        cuentaDestinoL.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
         numTransaccion.setBackground(new java.awt.Color(0, 153, 153));
         numTransaccion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -203,12 +184,12 @@ public class Pnl_Transferir extends javax.swing.JPanel {
         numTransaccion.setText(".");
         numTransaccion.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        cuentaOrigen.setBackground(new java.awt.Color(0, 153, 153));
-        cuentaOrigen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        cuentaOrigen.setForeground(new java.awt.Color(0, 0, 0));
-        cuentaOrigen.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        cuentaOrigen.setText(".");
-        cuentaOrigen.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        cuentaOrigenL.setBackground(new java.awt.Color(0, 153, 153));
+        cuentaOrigenL.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cuentaOrigenL.setForeground(new java.awt.Color(0, 0, 0));
+        cuentaOrigenL.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        cuentaOrigenL.setText(".");
+        cuentaOrigenL.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
         dniCliente.setBackground(new java.awt.Color(0, 153, 153));
         dniCliente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -217,12 +198,12 @@ public class Pnl_Transferir extends javax.swing.JPanel {
         dniCliente.setText(".");
         dniCliente.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        monto.setBackground(new java.awt.Color(0, 153, 153));
-        monto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        monto.setForeground(new java.awt.Color(0, 0, 0));
-        monto.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        monto.setText(".");
-        monto.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        montoL.setBackground(new java.awt.Color(0, 153, 153));
+        montoL.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        montoL.setForeground(new java.awt.Color(0, 0, 0));
+        montoL.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        montoL.setText(".");
+        montoL.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
         javax.swing.GroupLayout boletaTransferenciaLayout = new javax.swing.GroupLayout(boletaTransferencia);
         boletaTransferencia.setLayout(boletaTransferenciaLayout);
@@ -239,15 +220,15 @@ public class Pnl_Transferir extends javax.swing.JPanel {
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(boletaTransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(monto, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(montoL, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dniCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(100, 100, 100))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, boletaTransferenciaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(boletaTransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, boletaTransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(cuentaOrigen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
-                        .addComponent(cuentaDestino, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(cuentaOrigenL, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                        .addComponent(cuentaDestinoL, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(numTransaccion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(102, 102, 102))
         );
@@ -261,15 +242,15 @@ public class Pnl_Transferir extends javax.swing.JPanel {
                 .addGap(27, 27, 27)
                 .addGroup(boletaTransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cuentaOrigen))
+                    .addComponent(cuentaOrigenL))
                 .addGap(25, 25, 25)
                 .addGroup(boletaTransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cuentaDestino))
+                    .addComponent(cuentaDestinoL))
                 .addGap(18, 18, 18)
                 .addGroup(boletaTransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(monto))
+                    .addComponent(montoL))
                 .addGap(16, 16, 16)
                 .addGroup(boletaTransferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -279,7 +260,11 @@ public class Pnl_Transferir extends javax.swing.JPanel {
         jPanel2.add(boletaTransferencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 380, 310));
 
         jSeparator5.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel2.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, 230, 10));
+        jPanel2.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, 230, 10));
+
+        avisoFondo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        avisoFondo.setForeground(new java.awt.Color(153, 0, 0));
+        jPanel2.add(avisoFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 820, 140));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -325,23 +310,51 @@ public class Pnl_Transferir extends javax.swing.JPanel {
     }//GEN-LAST:event_origenEntradaActionPerformed
 
     private void limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarActionPerformed
-        // TODO add your handling code here:
+        limpiar();
+        avisoFondo.setText("");
     }//GEN-LAST:event_limpiarActionPerformed
 
+    private void limpiar() {
+        claveEntrada.setText("");
+        montoEntrada.setText("");
+        origenEntrada.setText("");
+        destinoEntrada.setText("");
+    }
+    
     private void boletaTransferenciaComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_boletaTransferenciaComponentHidden
         // TODO add your handling code here:
     }//GEN-LAST:event_boletaTransferenciaComponentHidden
 
+    private void transferirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transferirActionPerformed
+        try {
+            String clave = new String(claveEntrada.getPassword());
+            String monto = montoEntrada.getText();
+            String cuentaOrigen = origenEntrada.getText();
+            String cuentaDestino = destinoEntrada.getText();
+            
+            Transferencia nuevaTransaccion = banco.getgTransacciones().procesarTransferencia(usuarioActual, cuentaOrigen, cuentaDestino, monto, String.valueOf(usuarioActual.getDni()), clave);
+            
+            numTransaccion.setText(String.valueOf(nuevaTransaccion.getIdTransaccion()));
+            cuentaOrigenL.setText(cuentaOrigen);
+            cuentaDestinoL.setText(cuentaDestino);
+            montoL.setText(monto);
+            dniCliente.setText(String.valueOf(usuarioActual.getDni()));
+            
+        } catch(Exception e) {
+            limpiar();
+            avisoFondo.setText(e.getMessage());
+        }
+        
+        
+    }//GEN-LAST:event_transferirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel avisoCtaOrigen;
-    private javax.swing.JLabel avisoCtaOrigen1;
-    private javax.swing.JLabel avisoCtaOrigen2;
-    private javax.swing.JLabel avisoCtaOrigen3;
+    private javax.swing.JLabel avisoFondo;
     private javax.swing.JPanel boletaTransferencia;
     private javax.swing.JPasswordField claveEntrada;
-    private javax.swing.JLabel cuentaDestino;
-    private javax.swing.JLabel cuentaOrigen;
+    private javax.swing.JLabel cuentaDestinoL;
+    private javax.swing.JLabel cuentaOrigenL;
     private javax.swing.JTextField destinoEntrada;
     private javax.swing.JLabel dniCliente;
     private javax.swing.JLabel jLabel1;
@@ -361,8 +374,8 @@ public class Pnl_Transferir extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JButton limpiar;
-    private javax.swing.JLabel monto;
     private javax.swing.JTextField montoEntrada;
+    private javax.swing.JLabel montoL;
     private javax.swing.JLabel numTransaccion;
     private javax.swing.JTextField origenEntrada;
     private javax.swing.JButton transferir;
