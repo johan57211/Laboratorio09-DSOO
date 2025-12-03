@@ -3,15 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/TrabajosNetbeans/Laboratorio09-DSOO/src/InterfazGrafica/mainFrame/MainFrame.java</file>
-            <file>file:/E:/TrabajosNetbeans/Laboratorio09-DSOO/src/InterfazGrafica/panelCliente/Paneles/Pnl_Transferir.java</file>
-            <file>file:/E:/TrabajosNetbeans/Laboratorio09-DSOO/src/Banco/ClasesBase/Transferencia.java</file>
-            <file>file:/E:/TrabajosNetbeans/Laboratorio09-DSOO/src/Banco/ClasesBase/Transaccion.java</file>
-            <file>file:/E:/TrabajosNetbeans/Laboratorio09-DSOO/src/InterfazGrafica/panelEmpleado/PanelesMetodos/EmpleadoConsultarInformacion.java</file>
-            <file>file:/E:/TrabajosNetbeans/Laboratorio09-DSOO/src/InterfazGrafica/panelEmpleado/PanelesMetodos/EmpleadoRetiro.java</file>
-            <file>file:/E:/TrabajosNetbeans/Laboratorio09-DSOO/src/Banco/Gestores/GestorTransacciones.java</file>
-            <file>file:/E:/TrabajosNetbeans/Laboratorio09-DSOO/src/Banco/ClasesBase/Cuenta.java</file>
+            <file>file:/E:/TrabajosNetbeans/Laboratorio09-DSOO/src/InterfazGrafica/panelEmpleado/PanelesMetodos/EmpleadoDeposito.java</file>
+            <file>file:/E:/TrabajosNetbeans/Laboratorio09-DSOO/src/InterfazGrafica/mainFrame/Pnl_Iniciar_Sesion.java</file>
+            <file>file:/E:/TrabajosNetbeans/Laboratorio09-DSOO/src/InterfazGrafica/panelAdmin/AdminConsultarInformacion.java</file>
+            <file>file:/E:/TrabajosNetbeans/Laboratorio09-DSOO/src/InterfazGrafica/panelNoUsado/IniciarSesion.java</file>
+            <file>file:/E:/TrabajosNetbeans/Laboratorio09-DSOO/src/InterfazGrafica/panelNoUsado/MenuCliente.java</file>
             <file>file:/E:/TrabajosNetbeans/Laboratorio09-DSOO/src/InterfazGrafica/panelCliente/Pnl_Menu_Cliente.java</file>
+            <file>file:/E:/TrabajosNetbeans/Laboratorio09-DSOO/src/InterfazGrafica/mainFrame/MainFrame.java</file>
+            <file>file:/E:/TrabajosNetbeans/Laboratorio09-DSOO/src/InterfazGrafica/panelEmpleado/PanelesMetodos/EmpleadoRetiro.java</file>
+            <file>file:/E:/TrabajosNetbeans/Laboratorio09-DSOO/src/InterfazGrafica/panelEmpleado/PanelesMetodos/EmpleadoRegistrarCliente.java</file>
+            <file>file:/E:/TrabajosNetbeans/Laboratorio09-DSOO/src/InterfazGrafica/panelEmpleado/PanelesMetodos/EmpleadoMovimientosDeCuenta.java</file>
+            <file>file:/E:/TrabajosNetbeans/Laboratorio09-DSOO/src/InterfazGrafica/panelEmpleado/PanelesMetodos/EmpleadoConsultarInformacion.java</file>
+            <file>file:/E:/TrabajosNetbeans/Laboratorio09-DSOO/src/InterfazGrafica/panelEmpleado/Pnl_Menu_Empleado.java</file>
+            <file>file:/E:/TrabajosNetbeans/Laboratorio09-DSOO/src/InterfazGrafica/panelCliente/Paneles/Pnl_Transferir.java</file>
+            <file>file:/E:/TrabajosNetbeans/Laboratorio09-DSOO/src/InterfazGrafica/panelCliente/Paneles/Pnl_ConsultarCuenta.java</file>
         </group>
     </open-files>
 </project-private>
