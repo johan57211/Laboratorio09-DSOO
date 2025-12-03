@@ -102,24 +102,6 @@ public class GestorClientes {
     
     
     
-    // -- METODO PARA AUTENTICAR ENTRADA --
-    public Cliente autenticar(String correo, String contraseña) throws BancoException {
-        if (!validarStringNoVacio(correo) || !validarStringNoVacio(contraseña)) {
-            throw new BancoException.ValidacionException("Correo y contraseña son obligatorios");
-        }
-        
-        Cliente cliente = buscarClienteCorreo(correo);
-        if (cliente == null) {
-            throw new BancoException.CredencialesInvalidasException("Credenciales incorrectas");
-        }
-        
-        if (!cliente.getContraseña().equals(contraseña)) {
-            throw new BancoException.CredencialesInvalidasException("Credenciales incorrectas");
-        }
-        
-        return cliente;
-    }
-    
     
     // Metodos del Gestor
     public Cliente buscarCliente(int dni) {
@@ -142,7 +124,7 @@ public class GestorClientes {
     }
 
     public boolean validarStringNoVacio(String palabra) {
-        return (palabra == null || palabra.trim().isEmpty());
+        return !(palabra == null || palabra.trim().isEmpty());
     }
 
     public boolean validarFormatoCorreo(String correo) {

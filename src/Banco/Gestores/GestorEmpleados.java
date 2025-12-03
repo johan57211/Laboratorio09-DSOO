@@ -147,7 +147,7 @@ public class GestorEmpleados {
 
     
     // Buscar empleado por correo
-    public Usuario buscarEmpleadoPorCorreo(String correo) {
+    public Empleado buscarEmpleadoPorCorreo(String correo) {
         for (Empleado empleado : listaEmpleados) {
             if (empleado.getCorreo().equals(correo)) {
                 return empleado;
