@@ -40,26 +40,28 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="19" pref="19" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btnDeposito" alignment="0" min="-2" pref="195" max="-2" attributes="0"/>
-                              <Component id="btnRetiro" alignment="0" min="-2" pref="195" max="-2" attributes="0"/>
-                              <Component id="btnCerrarSesion" alignment="0" min="-2" pref="195" max="-2" attributes="0"/>
-                              <Component id="btnRegistrarCliente" alignment="0" min="-2" pref="195" max="-2" attributes="0"/>
-                              <Component id="btnBuscarCliente" alignment="0" min="-2" pref="195" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="19" pref="19" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="btnDeposito" alignment="0" min="-2" pref="195" max="-2" attributes="0"/>
+                                      <Component id="btnRetiro" alignment="0" min="-2" pref="195" max="-2" attributes="0"/>
+                                      <Component id="btnCerrarSesion" alignment="0" min="-2" pref="195" max="-2" attributes="0"/>
+                                      <Component id="btnRegistrarCliente" alignment="0" min="-2" pref="195" max="-2" attributes="0"/>
+                                      <Component id="btnBuscarCliente" alignment="0" min="-2" pref="195" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                                  <Component id="iconoCliente" min="-2" pref="107" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
+                          <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                          <Component id="iconoCliente" min="-2" pref="107" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                          <Component id="nombreEmpleado" min="-2" pref="146" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="nombreEmpleado" alignment="1" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="16" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -163,6 +165,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Icono Cliente"/>
           </Properties>
         </Component>

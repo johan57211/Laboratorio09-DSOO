@@ -5,7 +5,6 @@ import Banco.ClasesBase.*;
 import Banco.GestorPrincipal.Banco;
 import InterfazGrafica.panelAdmin.PanelesMetodos.*;
 import java.awt.CardLayout;
-import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
@@ -37,7 +36,7 @@ public class Pnl_Menu_Admin extends javax.swing.JPanel {
         inicializarPaneles();
         setVisible(true);
         
-        nombreAdmin.setText(usuarioActual.getNombres());
+        nombreAdmin.setText("Usuario: " + usuarioActual.getNombres().toUpperCase());
     }
     
     private void inicializarPaneles() {
@@ -148,7 +147,7 @@ public class Pnl_Menu_Admin extends javax.swing.JPanel {
         btnAbrirCuenta.setBorderPainted(false);
         btnAbrirCuenta.addActionListener(this::btnAbrirCuentaActionPerformed);
 
-        nombreAdmin.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
+        nombreAdmin.setFont(new java.awt.Font("SimSun", 1, 14)); // NOI18N
         nombreAdmin.setForeground(new java.awt.Color(0, 0, 0));
         nombreAdmin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
@@ -183,6 +182,9 @@ public class Pnl_Menu_Admin extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(iconoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnBuscarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -195,13 +197,8 @@ public class Pnl_Menu_Admin extends javax.swing.JPanel {
                             .addComponent(btnDeposito, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                             .addComponent(btnRetirar, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                             .addComponent(btnCerrarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnAbrirCuenta1, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(nombreAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(iconoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnAbrirCuenta1, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                            .addComponent(nombreAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -210,8 +207,8 @@ public class Pnl_Menu_Admin extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(iconoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nombreAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(nombreAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnBuscarCliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRegistrarCliente)
