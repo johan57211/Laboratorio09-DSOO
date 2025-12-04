@@ -21,8 +21,7 @@ public class GestorTransacciones {
     }
 
     // ========== DEPÓSITO ==========
-    public Deposito procesarDeposito(Usuario usuarioActual, String numeroCuenta, String monto, 
-                                     String dniCliente, String claveCuenta) throws BancoException {
+    public Deposito procesarDeposito(Usuario usuarioActual, String numeroCuenta, String monto, String dniCliente, String claveCuenta) throws BancoException {
         
         // Validar permisos
         if (!(usuarioActual instanceof Cliente) && 

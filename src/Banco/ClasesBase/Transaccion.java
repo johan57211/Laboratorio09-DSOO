@@ -43,10 +43,6 @@ public abstract class Transaccion {
         this.cuenta = cuenta;
     }
 
-    public LocalDateTime getFecha() {
-        return fecha;
-    }
-
     public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
     }
@@ -67,7 +63,7 @@ public abstract class Transaccion {
         this.cliente = cliente;
     }
 
-    public String getFechaFormateada() {
+    public String getFecha() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         return fecha.format(formatter);
     }
@@ -81,7 +77,7 @@ public abstract class Transaccion {
         return "\nTransaccion nro: "+idTransaccion+
                "\nMonto: " + monto + 
                "\nCuenta: " + cuenta.getNumeroCuenta() +
-               "\nFecha: " + getFechaFormateada() +
+               "\nFecha: " + getFecha() +
                (cliente != null ? "\nRemitente: " + cliente.getNombres() : "") + "\tDNI: "+cliente.getDni()+
                (empleado != null ? "\nGestionado por: " + empleado.getNombres() : "");
     }

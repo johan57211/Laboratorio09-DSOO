@@ -39,7 +39,7 @@ public class Transferencia extends Transaccion {
                "\nMonto: S/" + monto +
                "\nCuenta Origen: " + cuenta.getNumeroCuenta() +
                "\nCuenta Destino: " + cuentaDestino.getNumeroCuenta() +
-               "\nFecha: " + getFechaFormateada() +
+               "\nFecha: " + getFecha() +
                (cliente != null ? "\nCliente: " + cliente.getNombres() : "") +
                (empleado != null ? "\nGestionado por: " + empleado.getNombres() : "");
     }
