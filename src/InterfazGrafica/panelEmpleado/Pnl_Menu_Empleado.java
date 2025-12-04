@@ -26,6 +26,7 @@ public class Pnl_Menu_Empleado extends javax.swing.JPanel {
         inicializarPaneles();
         vista = (CardLayout) Pnl_Vista_Principal.getLayout();
         setVisible(true);
+        nombreEmpleado.setText(usuario.getNombres());
     }
 
     private void inicializarPaneles() {
@@ -46,9 +47,9 @@ public class Pnl_Menu_Empleado extends javax.swing.JPanel {
         btnDeposito = new javax.swing.JButton();
         btnCerrarSesion = new javax.swing.JButton();
         iconoCliente = new javax.swing.JLabel();
-        nombreCliente = new javax.swing.JLabel();
         btnRegistrarCliente = new javax.swing.JButton();
         btnBuscarCliente = new javax.swing.JButton();
+        nombreEmpleado = new javax.swing.JLabel();
         Pnl_Vista_Principal = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -84,8 +85,6 @@ public class Pnl_Menu_Empleado extends javax.swing.JPanel {
         iconoCliente.setForeground(new java.awt.Color(0, 0, 0));
         iconoCliente.setText("Icono Cliente");
 
-        nombreCliente.setText("nombre Cliente");
-
         btnRegistrarCliente.setBackground(new java.awt.Color(204, 0, 0));
         btnRegistrarCliente.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnRegistrarCliente.setForeground(new java.awt.Color(255, 255, 255));
@@ -101,6 +100,10 @@ public class Pnl_Menu_Empleado extends javax.swing.JPanel {
         btnBuscarCliente.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnBuscarCliente.setBorderPainted(false);
         btnBuscarCliente.addActionListener(this::btnBuscarClienteActionPerformed);
+
+        nombreEmpleado.setFont(new java.awt.Font("SimSun", 1, 14)); // NOI18N
+        nombreEmpleado.setForeground(new java.awt.Color(0, 0, 0));
+        nombreEmpleado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -118,19 +121,20 @@ public class Pnl_Menu_Empleado extends javax.swing.JPanel {
                             .addComponent(btnBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(53, 53, 53)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(iconoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(nombreCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE))))
+                        .addComponent(iconoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(nombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(14, 14, 14)
                 .addComponent(iconoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nombreCliente)
-                .addGap(18, 18, 18)
+                .addComponent(nombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnRetiro, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -213,6 +217,6 @@ public class Pnl_Menu_Empleado extends javax.swing.JPanel {
     private javax.swing.JButton btnRetiro;
     private javax.swing.JLabel iconoCliente;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel nombreCliente;
+    private javax.swing.JLabel nombreEmpleado;
     // End of variables declaration//GEN-END:variables
 }

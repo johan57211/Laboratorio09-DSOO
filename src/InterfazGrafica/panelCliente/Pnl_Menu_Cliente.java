@@ -26,11 +26,12 @@ public class Pnl_Menu_Cliente extends javax.swing.JPanel {
         vista = (CardLayout) Pnl_Vista_Principal.getLayout();
         inicializarPaneles();
         setVisible(true);
+        nombreCliente.setText(usuarioActual.getNombres());
     }
 
     private void inicializarPaneles() {
         consultarCuenta = new Pnl_ConsultarCuenta(banco, usuarioActual);
-        transferencia = new Pnl_Transferir(banco);
+        transferencia = new Pnl_Transferir(banco, usuarioActual);
     }
 
     @SuppressWarnings("unchecked")
@@ -79,7 +80,9 @@ public class Pnl_Menu_Cliente extends javax.swing.JPanel {
         iconoCliente.setForeground(new java.awt.Color(0, 0, 0));
         iconoCliente.setText("Icono Cliente");
 
-        nombreCliente.setText("nombre Cliente");
+        nombreCliente.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
+        nombreCliente.setForeground(new java.awt.Color(0, 0, 0));
+        nombreCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -95,10 +98,12 @@ public class Pnl_Menu_Cliente extends javax.swing.JPanel {
                             .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(53, 53, 53)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(iconoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(nombreCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE))))
+                        .addComponent(iconoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(16, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(nombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,8 +111,8 @@ public class Pnl_Menu_Cliente extends javax.swing.JPanel {
                 .addGap(26, 26, 26)
                 .addComponent(iconoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nombreCliente)
-                .addGap(42, 42, 42)
+                .addComponent(nombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
                 .addComponent(btnTransferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addComponent(btnConsultarCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -122,6 +127,26 @@ public class Pnl_Menu_Cliente extends javax.swing.JPanel {
         Pnl_Vista_Principal.setLayout(new java.awt.CardLayout());
         add(Pnl_Vista_Principal, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 920, 700));
     }// </editor-fold>//GEN-END:initComponents
+
+    // Cerrar Sesion Boton
+    private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
+        // TODO add your handling code here:
+        int respuesta = JOptionPane.showConfirmDialog(
+            this,
+            "¿Está seguro que desea cerrar sesión?",
+            "Confirmar Cierre de Sesión",
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.QUESTION_MESSAGE
+        );
+
+        if (respuesta == JOptionPane.YES_OPTION) {
+            // Obtener el MainFrame y volver al login
+            java.awt.Window ventana = SwingUtilities.getWindowAncestor(this);
+            if (ventana instanceof InterfazGrafica.mainFrame.MainFrame) {
+                ((InterfazGrafica.mainFrame.MainFrame) ventana).volverALogin();
+            }
+        }
+    }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
     // Transferencia Boton
     private void btnTransferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransferenciaActionPerformed
@@ -140,26 +165,6 @@ public class Pnl_Menu_Cliente extends javax.swing.JPanel {
         SwingUtilities.updateComponentTreeUI(this);
         this.repaint();
     }//GEN-LAST:event_btnConsultarCuentaActionPerformed
-
-    // Cerrar Sesion Boton
-    private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
-        // TODO add your handling code here:
-        int respuesta = JOptionPane.showConfirmDialog(
-                this,
-                "¿Está seguro que desea cerrar sesión?",
-                "Confirmar Cierre de Sesión",
-                JOptionPane.YES_NO_OPTION,
-                JOptionPane.QUESTION_MESSAGE
-        );
-
-        if (respuesta == JOptionPane.YES_OPTION) {
-            // Obtener el MainFrame y volver al login
-            java.awt.Window ventana = SwingUtilities.getWindowAncestor(this);
-            if (ventana instanceof InterfazGrafica.mainFrame.MainFrame) {
-                ((InterfazGrafica.mainFrame.MainFrame) ventana).volverALogin();
-            }
-        }
-    }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

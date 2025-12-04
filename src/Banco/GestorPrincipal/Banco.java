@@ -89,7 +89,7 @@ public class Banco {
     private void inicializarUsuarios() {
         // Admin
         try {
-            gEmpleados.setAdmin(new Admin("admin", 11111111, 100, "admin@banco.com", "admin123", 1));
+            gEmpleados.setAdmin(new Admin("admin", 11111111, 100, "admin", "123", 1));
             System.out.println("✓ Admin registrado");
         } catch (Exception e) {
             System.out.println("✗ Error registrando Admin: " + e.getMessage());

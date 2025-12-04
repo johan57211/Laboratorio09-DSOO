@@ -2,7 +2,7 @@ package InterfazGrafica.mainFrame;
 
 import Banco.ClasesBase.*;
 import Banco.GestorPrincipal.*;
-import InterfazGrafica.panelAdmin.MenAdmin;
+import InterfazGrafica.panelAdmin.Pnl_Menu_Admin;
 import InterfazGrafica.panelCliente.Pnl_Menu_Cliente;
 import InterfazGrafica.panelEmpleado.Pnl_Menu_Empleado;
 import java.awt.BorderLayout;
@@ -57,27 +57,19 @@ public class MainFrame extends javax.swing.JFrame {
         repaint();
     }
 
-    private void configurarBotonLogin() {
-        // Configurar el callback para cuando el login sea exitoso
-        panelLogin.setLoginCallback(this::navegarSegunUsuario);
-    }
-
-    /**
-     * Navega al menú correspondiente según el tipo de usuario
-     */
+    
     private void navegarSegunUsuario(Usuario usuario) {
 
-        // IMPORTANTE: Verificar Admin PRIMERO (es más específico)
         if (usuario instanceof Admin) {
             System.out.println("→ Navegando a menú Admin");
             irAMenuAdmin(usuario);
-        } 
-        // LUEGO Empleado
+        }
+        
         else if (usuario instanceof Empleado) {
             System.out.println("→ Navegando a menú Empleado");
             irAMenuEmpleado(usuario);
         } 
-        // FINALMENTE Cliente
+        
         else if (usuario instanceof Cliente) {
             System.out.println("→ Navegando a menú Cliente");
             irAMenuCliente(usuario);
@@ -92,9 +84,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     }
 
-    /**
-     * Navegar al menú de cliente
-     */
+    
     public void irAMenuCliente(Usuario usuario) {
         Pnl_Menu_Cliente menuCliente = new Pnl_Menu_Cliente(banco, usuario);
         contenedorPrincipal.add(menuCliente, "menuCliente");
@@ -102,9 +92,7 @@ public class MainFrame extends javax.swing.JFrame {
         logger.info("Usuario cliente " + usuario.getNombres() + " ingresó al sistema");
     }
 
-    /**
-     * Navegar al menú de empleado (por implementar)
-     */
+
     public void irAMenuEmpleado(Usuario usuario) {
         // Crear el panel del menú empleado
         Pnl_Menu_Empleado menuEmpleado = new Pnl_Menu_Empleado(banco, usuario);
@@ -118,22 +106,19 @@ public class MainFrame extends javax.swing.JFrame {
         logger.info("Usuario empleado " + usuario.getNombres() + " ingresó al sistema");
     }
 
-    /**
-     * Navegar al menú de administrador (por implementar)
-     */
+  
+    
     public void irAMenuAdmin(Usuario usuario) {
-        MenAdmin memuAdmin = new MenAdmin(banco, usuario);
+        Pnl_Menu_Admin memuAdmin = new Pnl_Menu_Admin(banco, usuario);
+        
         contenedorPrincipal.add(memuAdmin, "menuAdministrador");
-        JOptionPane.showMessageDialog(this,
-                "Menú de Administrador en desarrollo\nUsuario: " + usuario.getNombres(),
-                "Próximamente",
-                JOptionPane.INFORMATION_MESSAGE);
-        volverALogin();
+        
+        cardLayout.show(contenedorPrincipal, "menuAdministrador");
+        
+        logger.info("Usuario Admin " + usuario.getNombres() + " ingresó al sistema");
     }
 
-    /**
-     * Volver al panel de login (cerrar sesión)
-     */
+    
     public void volverALogin() {
         panelLogin = new Pnl_Iniciar_Sesion(banco);
         panelLogin.setLoginCallback(this::navegarSegunUsuario);
