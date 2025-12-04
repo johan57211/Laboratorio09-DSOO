@@ -22,6 +22,10 @@ public class Pnl_Menu_Admin extends javax.swing.JPanel {
     private Pnl_Admin_Eliminar_Empleado eliminarEmpleado;
     private Pnl_Admin_Registrar_Empleado registrarEmpleado;
     private Pnl_Admin_Abrir_Cuenta abrirCuenta;
+    private Pnl_Admin_Retiro retiro;
+    private Pnl_Admin_Deposito deposito;
+    private Pnl_Admin_Consultar_Cuenta consultarCuenta;
+            
     private CardLayout vista;
     
     public Pnl_Menu_Admin(Banco banco, Usuario usuarioActual) {
@@ -44,8 +48,10 @@ public class Pnl_Menu_Admin extends javax.swing.JPanel {
         registrarEmpleado = new Pnl_Admin_Registrar_Empleado(banco, usuarioActual);
         buscarEmpleado = new Pnl_Admin_Buscar_Empleado(banco, usuarioActual);
         abrirCuenta = new Pnl_Admin_Abrir_Cuenta(banco, usuarioActual);
-        // Abrir cuenta
-        // Ver Cuenta
+        retiro = new Pnl_Admin_Retiro(banco, usuarioActual);
+        deposito = new Pnl_Admin_Deposito(banco, usuarioActual);
+        consultarCuenta = new Pnl_Admin_Consultar_Cuenta(banco, usuarioActual);
+
     }
 
     @SuppressWarnings("unchecked")
@@ -61,11 +67,11 @@ public class Pnl_Menu_Admin extends javax.swing.JPanel {
         btnEliminarCliente = new javax.swing.JButton();
         btnRegistrarEmpleado = new javax.swing.JButton();
         btnEliminarEmpleado = new javax.swing.JButton();
-        btnBuscarCuenta = new javax.swing.JButton();
         btnAbrirCuenta = new javax.swing.JButton();
         nombreAdmin = new javax.swing.JLabel();
         btnDeposito = new javax.swing.JButton();
         btnRetirar = new javax.swing.JButton();
+        btnAbrirCuenta1 = new javax.swing.JButton();
         Pnl_Vista_Principal = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -134,14 +140,6 @@ public class Pnl_Menu_Admin extends javax.swing.JPanel {
         btnEliminarEmpleado.setBorderPainted(false);
         btnEliminarEmpleado.addActionListener(this::btnEliminarEmpleadoActionPerformed);
 
-        btnBuscarCuenta.setBackground(new java.awt.Color(204, 0, 0));
-        btnBuscarCuenta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnBuscarCuenta.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscarCuenta.setText("Buscar Cuenta");
-        btnBuscarCuenta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnBuscarCuenta.setBorderPainted(false);
-        btnBuscarCuenta.addActionListener(this::btnBuscarCuentaActionPerformed);
-
         btnAbrirCuenta.setBackground(new java.awt.Color(204, 0, 0));
         btnAbrirCuenta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnAbrirCuenta.setForeground(new java.awt.Color(255, 255, 255));
@@ -170,6 +168,14 @@ public class Pnl_Menu_Admin extends javax.swing.JPanel {
         btnRetirar.setBorderPainted(false);
         btnRetirar.addActionListener(this::btnRetirarActionPerformed);
 
+        btnAbrirCuenta1.setBackground(new java.awt.Color(204, 0, 0));
+        btnAbrirCuenta1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnAbrirCuenta1.setForeground(new java.awt.Color(255, 255, 255));
+        btnAbrirCuenta1.setText("Consultar Cuenta");
+        btnAbrirCuenta1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnAbrirCuenta1.setBorderPainted(false);
+        btnAbrirCuenta1.addActionListener(this::btnAbrirCuenta1ActionPerformed);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -185,11 +191,11 @@ public class Pnl_Menu_Admin extends javax.swing.JPanel {
                             .addComponent(btnEliminarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                             .addComponent(btnRegistrarEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                             .addComponent(btnEliminarEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
-                            .addComponent(btnBuscarCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                             .addComponent(btnAbrirCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                             .addComponent(btnDeposito, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                             .addComponent(btnRetirar, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
-                            .addComponent(btnCerrarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(btnCerrarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAbrirCuenta1, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addComponent(nombreAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -218,14 +224,14 @@ public class Pnl_Menu_Admin extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEliminarEmpleado)
                 .addGap(30, 30, 30)
-                .addComponent(btnBuscarCuenta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAbrirCuenta)
-                .addGap(24, 24, 24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAbrirCuenta1)
+                .addGap(26, 26, 26)
                 .addComponent(btnDeposito)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRetirar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
         );
@@ -238,10 +244,6 @@ public class Pnl_Menu_Admin extends javax.swing.JPanel {
         add(Pnl_Vista_Principal, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 0, 930, 700));
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
-    
-    
     private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
         // TODO add your handling code here:
         Pnl_Vista_Principal.add(buscarCliente, "buscarCliente");
@@ -317,28 +319,45 @@ public class Pnl_Menu_Admin extends javax.swing.JPanel {
         this.repaint();
     }//GEN-LAST:event_btnEliminarEmpleadoActionPerformed
 
-    private void btnBuscarCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCuentaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscarCuentaActionPerformed
-
     private void btnAbrirCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirCuentaActionPerformed
         // TODO add your handling code here:
+        Pnl_Vista_Principal.add(abrirCuenta, "abrirCuenta");
+        vista.show(Pnl_Vista_Principal, "abrirCuenta");
+        SwingUtilities.updateComponentTreeUI(this);
+        this.repaint();
     }//GEN-LAST:event_btnAbrirCuentaActionPerformed
 
     private void btnDepositoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositoActionPerformed
         // TODO add your handling code here:
+        Pnl_Vista_Principal.add(deposito, "deposito");
+        vista.show(Pnl_Vista_Principal, "deposito");
+        SwingUtilities.updateComponentTreeUI(this);
+        this.repaint();
+        
     }//GEN-LAST:event_btnDepositoActionPerformed
 
     private void btnRetirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetirarActionPerformed
         // TODO add your handling code here:
+        Pnl_Vista_Principal.add(retiro, "retiro");
+        vista.show(Pnl_Vista_Principal, "retiro");
+        SwingUtilities.updateComponentTreeUI(this);
+        this.repaint();
     }//GEN-LAST:event_btnRetirarActionPerformed
+
+    private void btnAbrirCuenta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirCuenta1ActionPerformed
+        // TODO add your handling code here:
+        Pnl_Vista_Principal.add(consultarCuenta, "consultarCuenta");
+        vista.show(Pnl_Vista_Principal, "consultarCuenta");
+        SwingUtilities.updateComponentTreeUI(this);
+        this.repaint();
+    }//GEN-LAST:event_btnAbrirCuenta1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Pnl_Vista_Principal;
     private javax.swing.JButton btnAbrirCuenta;
+    private javax.swing.JButton btnAbrirCuenta1;
     private javax.swing.JButton btnBuscarCliente;
-    private javax.swing.JButton btnBuscarCuenta;
     private javax.swing.JButton btnBuscarEmpleado;
     private javax.swing.JButton btnCerrarSesion;
     private javax.swing.JButton btnDeposito;
@@ -351,60 +370,5 @@ public class Pnl_Menu_Admin extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel nombreAdmin;
     // End of variables declaration//GEN-END:variables
-
-
-                                        
-
-    private void movCuentaBtnActionPerformed(java.awt.event.ActionEvent evt) {                                             
-        CardLayout vista = (CardLayout) Pnl_vista_principal.getLayout();
-        // Pnl_vista_principal.add(movimientos, "movimientos");
-        vista.show(Pnl_vista_principal, "movimientos");
-        SwingUtilities.updateComponentTreeUI(this);
-        this.repaint();
-    }                                            
-
-    private void rgDepBtnMouseEntered(java.awt.event.MouseEvent evt) {                                      
-        rgDepBtn.setBackground(new Color(255,255,255));
-        rgDepBtn.setForeground(new Color(0,0,0));
-    }                                     
-
-    private void rgDepBtnMouseExited(java.awt.event.MouseEvent evt) {                                     
-        rgDepBtn.setBackground(new Color(204,0,0));
-        rgDepBtn.setForeground(new Color(255,255,255));
-    }                                    
-
-    private void rgDepBtnActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        CardLayout vista = (CardLayout) Pnl_vista_principal.getLayout();
-        // Pnl_vista_principal.add(deposito, "deposito");
-        vista.show(Pnl_vista_principal, "deposito");
-        SwingUtilities.updateComponentTreeUI(this);
-        this.repaint();
-    }                                        
-
-    private void rgRetBtnActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        CardLayout vista = (CardLayout) Pnl_vista_principal.getLayout();
-        // Pnl_vista_principal.add(retiro, "retiro");
-        vista.show(Pnl_vista_principal, "retiro");
-        SwingUtilities.updateComponentTreeUI(this);
-        this.repaint();
-    }                                        
-
-    private void rgClienteBtnActionPerformed(java.awt.event.ActionEvent evt) {                                             
-        CardLayout vista = (CardLayout) Pnl_vista_principal.getLayout();
-        // Pnl_vista_principal.add(registrar, "registrar");
-        vista.show(Pnl_vista_principal, "registrar");
-        SwingUtilities.updateComponentTreeUI(this);
-        this.repaint();
-    }                                            
-
-
-    // Variables declaration - do not modify                     
-    private javax.swing.JPanel Pnl_vista_principal;
-
-    private javax.swing.JButton movCuentaBtn;
-    private javax.swing.JButton rgClienteBtn;
-    private javax.swing.JButton rgDepBtn;
-    private javax.swing.JButton rgRetBtn;
-        
-   }
-    // End of variables declaration
+ 
+}

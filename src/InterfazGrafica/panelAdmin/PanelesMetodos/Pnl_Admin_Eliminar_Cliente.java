@@ -46,7 +46,7 @@ public class Pnl_Admin_Eliminar_Cliente extends javax.swing.JPanel {
         jLabel1.setText("Eliminar Cliente");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Busque Al Cliente por DNI", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto Condensed", 0, 36))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Busque Al Cliente por DNI", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto Condensed", 0, 36), new java.awt.Color(0, 0, 0))); // NOI18N
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
@@ -54,7 +54,9 @@ public class Pnl_Admin_Eliminar_Cliente extends javax.swing.JPanel {
         jLabel7.setText("Ingrese DNI del Cliente: ");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 190, 30));
 
+        numDniEntrada.setBackground(new java.awt.Color(255, 255, 255));
         numDniEntrada.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
+        numDniEntrada.setForeground(new java.awt.Color(0, 0, 0));
         numDniEntrada.addActionListener(this::numDniEntradaActionPerformed);
         jPanel1.add(numDniEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 170, 30));
 
@@ -86,17 +88,23 @@ public class Pnl_Admin_Eliminar_Cliente extends javax.swing.JPanel {
         jLabel12.setText("Correo: ");
         contratoEliminacion.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
 
+        nombreCliente.setBackground(new java.awt.Color(255, 255, 255));
         nombreCliente.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
+        nombreCliente.setForeground(new java.awt.Color(0, 0, 0));
         nombreCliente.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         nombreCliente.addActionListener(this::nombreClienteActionPerformed);
         contratoEliminacion.add(nombreCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 170, 30));
 
+        dniCliente.setBackground(new java.awt.Color(255, 255, 255));
         dniCliente.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
+        dniCliente.setForeground(new java.awt.Color(0, 0, 0));
         dniCliente.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         dniCliente.addActionListener(this::dniClienteActionPerformed);
         contratoEliminacion.add(dniCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 170, 30));
 
+        correoCliente.setBackground(new java.awt.Color(255, 255, 255));
         correoCliente.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
+        correoCliente.setForeground(new java.awt.Color(0, 0, 0));
         correoCliente.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         correoCliente.addActionListener(this::correoClienteActionPerformed);
         contratoEliminacion.add(correoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 170, 30));
@@ -106,7 +114,9 @@ public class Pnl_Admin_Eliminar_Cliente extends javax.swing.JPanel {
         jLabel13.setText("Edad:");
         contratoEliminacion.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, 30));
 
+        edadCliente.setBackground(new java.awt.Color(255, 255, 255));
         edadCliente.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
+        edadCliente.setForeground(new java.awt.Color(0, 0, 0));
         edadCliente.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edadCliente.addActionListener(this::edadClienteActionPerformed);
         contratoEliminacion.add(edadCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 170, 30));
@@ -188,23 +198,28 @@ public class Pnl_Admin_Eliminar_Cliente extends javax.swing.JPanel {
 
         try {
             Cliente cliente = banco.getgClientes().mostrarCliente(dni);
-            banco.getgClientes().eliminarCliente(dni);
-            //Colocando en Contrato
-            nombreCliente.setText(cliente.getNombres());
-            correoCliente.setText(cliente.getCorreo());
-            dniCliente.setText(dni);
-            edadCliente.setText(String.valueOf(cliente.getEdad()));
 
-            contratoEliminacion.setVisible(true);
-            numDniEntrada.setText("");
-            nombreCliente.setText("");
-            correoCliente.setText("");
-            dniCliente.setText("");
-            edadCliente.setText("");
-            
-            avisoError.setText("");
+            if (banco.getgClientes().eliminarCliente(dni)) {
+                //Colocando en Contrato
+                nombreCliente.setText(cliente.getNombres());
+                correoCliente.setText(cliente.getCorreo());
+                dniCliente.setText(dni);
+                edadCliente.setText(String.valueOf(cliente.getEdad()));
 
-            contratoEliminacion.setVisible(false);
+                contratoEliminacion.setVisible(true);
+                numDniEntrada.setText("");
+                
+                nombreCliente.setText(cliente.getNombres());
+                correoCliente.setText(cliente.getCorreo());
+                dniCliente.setText(String.valueOf(cliente.getDni()));
+                edadCliente.setText(String.valueOf(cliente.getEdad()));
+
+                avisoError.setText("");
+
+                contratoEliminacion.setVisible(true);
+            } else {
+                throw new Exception("Error al Eliminar Cliente");
+            }
 
         } catch (Exception e) {
             avisoError.setText(e.getMessage());

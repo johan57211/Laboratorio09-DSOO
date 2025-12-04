@@ -11,11 +11,11 @@ public class Pnl_Menu_Empleado extends javax.swing.JPanel {
     private Banco banco;
     private Usuario usuario;
 
-    private EmpleadoDeposito deposito;
-    private EmpleadoRetiro retiro;
-    private EmpleadoRegistrarCliente registrar;
-    private EmpleadoConsultarInformacion consultar;
-    private EmpleadoMovimientosDeCuenta movimientos;
+    private Pnl_Empleado_Deposito deposito;
+    private Pnl_Empleado_Retiro retiro;
+    private Pnl_Empleado_Registrar_Cliente registrar;
+    private Pnl_Empleado_Consultar_Cliente consultar;
+    private Pnl_Empleado_Consultar_Cuenta movimientos;
 
     private CardLayout vista;
 
@@ -31,11 +31,11 @@ public class Pnl_Menu_Empleado extends javax.swing.JPanel {
 
     private void inicializarPaneles() {
         // Inicializar los subpaneles con el banco y usuario
-        deposito = new EmpleadoDeposito(banco, usuario);
-        retiro = new EmpleadoRetiro(banco, usuario);
-        registrar = new EmpleadoRegistrarCliente(banco, usuario);
-        consultar = new EmpleadoConsultarInformacion(banco, usuario);
-        movimientos = new EmpleadoMovimientosDeCuenta(banco, usuario);
+        deposito = new Pnl_Empleado_Deposito(banco, usuario);
+        retiro = new Pnl_Empleado_Retiro(banco, usuario);
+        registrar = new Pnl_Empleado_Registrar_Cliente(banco, usuario);
+        consultar = new Pnl_Empleado_Consultar_Cliente(banco, usuario);
+        movimientos = new Pnl_Empleado_Consultar_Cuenta(banco, usuario);
     }
 
     @SuppressWarnings("unchecked")

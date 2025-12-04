@@ -1,21 +1,19 @@
-package InterfazGrafica.panelAdmin.PanelesMetodos;
+
+package InterfazGrafica.panelEmpleado.PanelesMetodos;
 
 import Banco.ClasesBase.*;
 import Banco.GestorPrincipal.Banco;
 
-
-public class Pnl_Admin_Buscar_Empleado extends javax.swing.JPanel {
-
+public class Pnl_Empleado_Consultar_Cliente extends javax.swing.JPanel {
     private Banco banco;
     private Usuario usuarioActual;
     
-    public Pnl_Admin_Buscar_Empleado(Banco banco, Usuario usuarioActual) {
+    public Pnl_Empleado_Consultar_Cliente(Banco banco, Usuario usuarioActual) {
         initComponents();
         this.banco = banco;
         this.usuarioActual = usuarioActual;
-        contratoCliente.setVisible(false);
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -44,21 +42,21 @@ public class Pnl_Admin_Buscar_Empleado extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Palatino Linotype", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Buscar Empleado");
+        jLabel1.setText("Consultar Cliente");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true), "Busque Al Empleado por DNI", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto Condensed", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true), "Busque Al Cliente por DNI", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto Condensed", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setText("Ingrese DNI del Empleado: ");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 230, 30));
+        jLabel7.setText("Ingrese DNI del Cliente: ");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 190, 30));
 
         dniField.setBackground(new java.awt.Color(255, 255, 255));
         dniField.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
         dniField.addActionListener(this::dniFieldActionPerformed);
-        jPanel1.add(dniField, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 170, 30));
+        jPanel1.add(dniField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 170, 30));
 
         limpiarBtn.setBackground(new java.awt.Color(204, 0, 0));
         limpiarBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -70,7 +68,7 @@ public class Pnl_Admin_Buscar_Empleado extends javax.swing.JPanel {
         jPanel1.add(limpiarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 100, 120, 40));
 
         contratoCliente.setBackground(new java.awt.Color(255, 255, 255));
-        contratoCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0), 3), "Contrato Empleado", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Roboto Condensed", 1, 18), new java.awt.Color(0, 0, 0))); // NOI18N
+        contratoCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0), 3), "Contrato Cliente", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Roboto Condensed", 1, 18), new java.awt.Color(0, 0, 0))); // NOI18N
         contratoCliente.setForeground(new java.awt.Color(0, 0, 0));
         contratoCliente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -146,7 +144,7 @@ public class Pnl_Admin_Buscar_Empleado extends javax.swing.JPanel {
         jPanel1.add(btnBuscarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, 120, 40));
 
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 170, 20));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 170, 20));
 
         avisoError.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         avisoError.setForeground(new java.awt.Color(153, 0, 0));
@@ -222,7 +220,7 @@ public class Pnl_Admin_Buscar_Empleado extends javax.swing.JPanel {
         String dni = dniField.getText();
 
         try {
-            Empleado cliente = banco.getgEmpleados().mostrarEmpleado(dni);
+            Cliente cliente = banco.getgClientes().mostrarCliente(dni);
 
             //Colocando en Contrato
             nombreCliente.setText(cliente.getNombres());
