@@ -18,10 +18,10 @@ public class Pnl_Menu_Admin extends javax.swing.JPanel {
     private Pnl_Admin_Consultar_Cliente buscarCliente;
     private Pnl_Admin_Eliminar_Cliente eliminarCliente;
     private Pnl_Admin_Registrar_Cliente registrarCliente;
-    //buscar empleado
+    private Pnl_Admin_Buscar_Empleado buscarEmpleado;
     private Pnl_Admin_Eliminar_Empleado eliminarEmpleado;
     private Pnl_Admin_Registrar_Empleado registrarEmpleado;
-    
+    private Pnl_Admin_Abrir_Cuenta abrirCuenta;
     private CardLayout vista;
     
     public Pnl_Menu_Admin(Banco banco, Usuario usuarioActual) {
@@ -42,6 +42,10 @@ public class Pnl_Menu_Admin extends javax.swing.JPanel {
         registrarCliente = new Pnl_Admin_Registrar_Cliente(banco, usuarioActual);
         eliminarEmpleado = new Pnl_Admin_Eliminar_Empleado(banco, usuarioActual);
         registrarEmpleado = new Pnl_Admin_Registrar_Empleado(banco, usuarioActual);
+        buscarEmpleado = new Pnl_Admin_Buscar_Empleado(banco, usuarioActual);
+        abrirCuenta = new Pnl_Admin_Abrir_Cuenta(banco, usuarioActual);
+        // Abrir cuenta
+        // Ver Cuenta
     }
 
     @SuppressWarnings("unchecked")
@@ -59,8 +63,9 @@ public class Pnl_Menu_Admin extends javax.swing.JPanel {
         btnEliminarEmpleado = new javax.swing.JButton();
         btnBuscarCuenta = new javax.swing.JButton();
         btnAbrirCuenta = new javax.swing.JButton();
-        btnEliminarCuenta = new javax.swing.JButton();
         nombreAdmin = new javax.swing.JLabel();
+        btnDeposito = new javax.swing.JButton();
+        btnRetirar = new javax.swing.JButton();
         Pnl_Vista_Principal = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -86,6 +91,7 @@ public class Pnl_Menu_Admin extends javax.swing.JPanel {
 
         iconoCliente.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         iconoCliente.setForeground(new java.awt.Color(0, 0, 0));
+        iconoCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         iconoCliente.setText("Icono Cliente");
 
         btnBuscarEmpleado.setBackground(new java.awt.Color(204, 0, 0));
@@ -144,17 +150,25 @@ public class Pnl_Menu_Admin extends javax.swing.JPanel {
         btnAbrirCuenta.setBorderPainted(false);
         btnAbrirCuenta.addActionListener(this::btnAbrirCuentaActionPerformed);
 
-        btnEliminarCuenta.setBackground(new java.awt.Color(204, 0, 0));
-        btnEliminarCuenta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnEliminarCuenta.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminarCuenta.setText("Abrir Cuenta");
-        btnEliminarCuenta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnEliminarCuenta.setBorderPainted(false);
-        btnEliminarCuenta.addActionListener(this::btnEliminarCuentaActionPerformed);
-
         nombreAdmin.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
         nombreAdmin.setForeground(new java.awt.Color(0, 0, 0));
         nombreAdmin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        btnDeposito.setBackground(new java.awt.Color(204, 0, 0));
+        btnDeposito.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnDeposito.setForeground(new java.awt.Color(255, 255, 255));
+        btnDeposito.setText("Depositar");
+        btnDeposito.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnDeposito.setBorderPainted(false);
+        btnDeposito.addActionListener(this::btnDepositoActionPerformed);
+
+        btnRetirar.setBackground(new java.awt.Color(204, 0, 0));
+        btnRetirar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnRetirar.setForeground(new java.awt.Color(255, 255, 255));
+        btnRetirar.setText("Retirar");
+        btnRetirar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnRetirar.setBorderPainted(false);
+        btnRetirar.addActionListener(this::btnRetirarActionPerformed);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -165,7 +179,6 @@ public class Pnl_Menu_Admin extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnCerrarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnBuscarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnBuscarEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                             .addComponent(btnRegistrarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
@@ -174,13 +187,15 @@ public class Pnl_Menu_Admin extends javax.swing.JPanel {
                             .addComponent(btnEliminarEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                             .addComponent(btnBuscarCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                             .addComponent(btnAbrirCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
-                            .addComponent(btnEliminarCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(iconoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnDeposito, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                            .addComponent(btnRetirar, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                            .addComponent(btnCerrarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(37, 37, 37)
-                        .addComponent(nombreAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(nombreAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(iconoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -190,25 +205,27 @@ public class Pnl_Menu_Admin extends javax.swing.JPanel {
                 .addComponent(iconoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nombreAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addComponent(btnBuscarCliente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRegistrarCliente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEliminarCliente)
-                .addGap(27, 27, 27)
+                .addGap(30, 30, 30)
                 .addComponent(btnBuscarEmpleado)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRegistrarEmpleado)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEliminarEmpleado)
-                .addGap(26, 26, 26)
+                .addGap(30, 30, 30)
                 .addComponent(btnBuscarCuenta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAbrirCuenta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnEliminarCuenta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
+                .addComponent(btnDeposito)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnRetirar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
         );
@@ -259,6 +276,10 @@ public class Pnl_Menu_Admin extends javax.swing.JPanel {
     
     private void btnBuscarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarEmpleadoActionPerformed
         // TODO add your handling code here:
+        Pnl_Vista_Principal.add(buscarEmpleado, "buscarEmpleado");
+        vista.show(Pnl_Vista_Principal, "buscarEmpleado");
+        SwingUtilities.updateComponentTreeUI(this);
+        this.repaint();
         
     }//GEN-LAST:event_btnBuscarEmpleadoActionPerformed
 
@@ -304,9 +325,13 @@ public class Pnl_Menu_Admin extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAbrirCuentaActionPerformed
 
-    private void btnEliminarCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarCuentaActionPerformed
+    private void btnDepositoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnEliminarCuentaActionPerformed
+    }//GEN-LAST:event_btnDepositoActionPerformed
+
+    private void btnRetirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetirarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRetirarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -316,11 +341,12 @@ public class Pnl_Menu_Admin extends javax.swing.JPanel {
     private javax.swing.JButton btnBuscarCuenta;
     private javax.swing.JButton btnBuscarEmpleado;
     private javax.swing.JButton btnCerrarSesion;
+    private javax.swing.JButton btnDeposito;
     private javax.swing.JButton btnEliminarCliente;
-    private javax.swing.JButton btnEliminarCuenta;
     private javax.swing.JButton btnEliminarEmpleado;
     private javax.swing.JButton btnRegistrarCliente;
     private javax.swing.JButton btnRegistrarEmpleado;
+    private javax.swing.JButton btnRetirar;
     private javax.swing.JLabel iconoCliente;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel nombreAdmin;

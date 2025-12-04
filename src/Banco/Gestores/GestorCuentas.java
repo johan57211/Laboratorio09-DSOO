@@ -51,9 +51,6 @@ public class GestorCuentas {
 
         contadorNroCuenta++;
         
-        System.out.println("\n"+cuenta);
-        System.out.println("\n"+nTitularidad);
-        
         return cuenta;
 
     }
