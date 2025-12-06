@@ -14,6 +14,7 @@ public class Pnl_Empleado_Registrar_Cliente extends javax.swing.JPanel {
         this.banco = banco;
         this.usuarioActual = usuarioActual;
         setSize(920, 700);
+        contratoCliente.setVisible(false);
     }
 
     
@@ -236,7 +237,7 @@ public class Pnl_Empleado_Registrar_Cliente extends javax.swing.JPanel {
         edadCliente.addActionListener(this::edadClienteActionPerformed);
         contratoCliente.add(edadCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 190, 170, 30));
 
-        jPanel1.add(contratoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 580, 300));
+        jPanel1.add(contratoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 580, 300));
 
         avisoError.setFont(new java.awt.Font("Leelawadee", 1, 18)); // NOI18N
         avisoError.setForeground(new java.awt.Color(153, 0, 0));

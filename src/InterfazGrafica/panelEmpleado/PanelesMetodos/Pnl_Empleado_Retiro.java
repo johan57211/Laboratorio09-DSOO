@@ -14,6 +14,7 @@ public class Pnl_Empleado_Retiro extends javax.swing.JPanel {
         this.banco = banco;
         this.usuarioActual = usuarioActual;
         setSize(920, 700);
+        boletaRetiro.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")

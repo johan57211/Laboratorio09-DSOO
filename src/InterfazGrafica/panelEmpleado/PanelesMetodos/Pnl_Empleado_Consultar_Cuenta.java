@@ -15,6 +15,7 @@ public class Pnl_Empleado_Consultar_Cuenta extends javax.swing.JPanel {
         this.banco = banco;
         this.usuarioActual = usuarioActual;
         setSize(920, 700);
+        contratoCuenta.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")

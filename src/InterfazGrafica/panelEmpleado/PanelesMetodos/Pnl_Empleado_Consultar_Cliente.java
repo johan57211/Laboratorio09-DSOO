@@ -13,6 +13,7 @@ public class Pnl_Empleado_Consultar_Cliente extends javax.swing.JPanel {
         this.banco = banco;
         this.usuarioActual = usuarioActual;
         setSize(920, 700);
+        contratoCliente.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")

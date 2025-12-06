@@ -12,6 +12,8 @@ public class Pnl_Empleado_Deposito extends javax.swing.JPanel {
         initComponents();
         this.banco = banco;
         this.usuarioActual = usuarioActual;
+        setSize(920, 700);
+        boletaDeposito.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")

@@ -60,17 +60,14 @@ public class MainFrame extends javax.swing.JFrame {
     private void navegarSegunUsuario(Usuario usuario) {
 
         if (usuario instanceof Admin) {
-            System.out.println("→ Navegando a menú Admin");
             irAMenuAdmin(usuario);
         }
         
         else if (usuario instanceof Empleado) {
-            System.out.println("→ Navegando a menú Empleado");
             irAMenuEmpleado(usuario);
         } 
         
         else if (usuario instanceof Cliente) {
-            System.out.println("→ Navegando a menú Cliente");
             irAMenuCliente(usuario);
         }
         
