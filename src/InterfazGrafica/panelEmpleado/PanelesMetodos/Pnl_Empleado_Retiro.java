@@ -13,6 +13,7 @@ public class Pnl_Empleado_Retiro extends javax.swing.JPanel {
         initComponents();
         this.banco = banco;
         this.usuarioActual = usuarioActual;
+        setSize(920, 700);
     }
 
     @SuppressWarnings("unchecked")
@@ -53,13 +54,14 @@ public class Pnl_Empleado_Retiro extends javax.swing.JPanel {
         setBackground(new java.awt.Color(204, 0, 0));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Palatino Linotype", 1, 48)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Leelawadee", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Retiro");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 420, 70));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("RETIRO");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 900, 70));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true), "Ingrese Datos para Retiro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto Condensed", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Ingrese Datos para Retiro", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Leelawadee", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
@@ -82,7 +84,7 @@ public class Pnl_Empleado_Retiro extends javax.swing.JPanel {
         jPanel1.add(limpiarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 130, 120, 40));
 
         boletaRetiro.setBackground(new java.awt.Color(255, 255, 255));
-        boletaRetiro.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0), 3), "Boleta Retiro", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Roboto Condensed", 1, 18), new java.awt.Color(0, 0, 0))); // NOI18N
+        boletaRetiro.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0), 3), "Boleta Retiro", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Leelawadee", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
         boletaRetiro.setForeground(new java.awt.Color(0, 0, 0));
         boletaRetiro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -215,7 +217,7 @@ public class Pnl_Empleado_Retiro extends javax.swing.JPanel {
         claveField.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(claveField, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 120, 170, 30));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 114, 870, 560));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 104, 860, 570));
     }// </editor-fold>//GEN-END:initComponents
 
     private void dniClienteFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dniClienteFieldActionPerformed

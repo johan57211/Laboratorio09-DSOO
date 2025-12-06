@@ -12,7 +12,6 @@ import javax.swing.*;
 
 public class MainFrame extends javax.swing.JFrame {
 
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MainFrame.class.getName());
 
     // Variables importantes para manejar los paneles
     private CardLayout cardLayout;
@@ -30,8 +29,8 @@ public class MainFrame extends javax.swing.JFrame {
     private void configurarVentana() {
         setTitle("Banco Nacional Cerdita - Sistema de Gestión");
         setSize(1150, 700);
-        setLocationRelativeTo(null); // Centrar ventana
-        setResizable(false); // Opcional: evitar que se redimensione
+        setLocationRelativeTo(null);
+        setResizable(false);
     }
 
     private void inicializarPaneles() {
@@ -74,8 +73,8 @@ public class MainFrame extends javax.swing.JFrame {
             System.out.println("→ Navegando a menú Cliente");
             irAMenuCliente(usuario);
         }
+        
         else {
-            System.out.println("ERROR: Tipo de usuario desconocido");
             JOptionPane.showMessageDialog(this,
                 "Error: Tipo de usuario no reconocido",
                 "Error",
@@ -86,36 +85,29 @@ public class MainFrame extends javax.swing.JFrame {
 
     
     public void irAMenuCliente(Usuario usuario) {
+        // Ir al panel del menú Cliente
         Pnl_Menu_Cliente menuCliente = new Pnl_Menu_Cliente(banco, usuario);
         contenedorPrincipal.add(menuCliente, "menuCliente");
         cardLayout.show(contenedorPrincipal, "menuCliente");
-        logger.info("Usuario cliente " + usuario.getNombres() + " ingresó al sistema");
     }
 
 
     public void irAMenuEmpleado(Usuario usuario) {
-        // Crear el panel del menú empleado
+        // Ir al panel del menú empleado
         Pnl_Menu_Empleado menuEmpleado = new Pnl_Menu_Empleado(banco, usuario);
-
-        // Agregarlo al contenedor
         contenedorPrincipal.add(menuEmpleado, "menuEmpleado");
-
-        // Mostrarlo
         cardLayout.show(contenedorPrincipal, "menuEmpleado");
 
-        logger.info("Usuario empleado " + usuario.getNombres() + " ingresó al sistema");
     }
 
   
     
     public void irAMenuAdmin(Usuario usuario) {
+        // Ir al panel del menú Admin
         Pnl_Menu_Admin memuAdmin = new Pnl_Menu_Admin(banco, usuario);
-        
         contenedorPrincipal.add(memuAdmin, "menuAdministrador");
-        
         cardLayout.show(contenedorPrincipal, "menuAdministrador");
         
-        logger.info("Usuario Admin " + usuario.getNombres() + " ingresó al sistema");
     }
 
     
@@ -124,7 +116,6 @@ public class MainFrame extends javax.swing.JFrame {
         panelLogin.setLoginCallback(this::navegarSegunUsuario);
         contenedorPrincipal.add(panelLogin, "inicioSesion");
         cardLayout.show(contenedorPrincipal, "inicioSesion");
-        logger.info("Sesión cerrada - volviendo al login");
     }
 
     /*
@@ -156,7 +147,6 @@ private void initComponents() {
 }// </editor-fold>
 
     public static void main(String args[]) {
-
         Banco banco = new Banco();
 
         java.awt.EventQueue.invokeLater(() -> {

@@ -50,22 +50,26 @@ public class Pnl_Empleado_Deposito extends javax.swing.JPanel {
         claveField = new javax.swing.JPasswordField();
 
         setBackground(new java.awt.Color(204, 0, 0));
+        setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Palatino Linotype", 1, 48)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Leelawadee", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Deposito");
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("DEPOSITO");
+        add(jLabel1);
+        jLabel1.setBounds(0, 20, 920, 70);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true), "Ingrese Datos para Deposito", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto Condensed", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Ingrese Datos Solicitados", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Leelawadee", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel7.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Leelawadee", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("DNI del Cliente: ");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 150, 30));
 
         dniClienteField.setBackground(new java.awt.Color(255, 255, 255));
-        dniClienteField.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
+        dniClienteField.setFont(new java.awt.Font("Leelawadee", 0, 14)); // NOI18N
         dniClienteField.addActionListener(this::dniClienteFieldActionPerformed);
         jPanel1.add(dniClienteField, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 170, 30));
 
@@ -79,88 +83,88 @@ public class Pnl_Empleado_Deposito extends javax.swing.JPanel {
         jPanel1.add(limpiarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 130, 120, 40));
 
         boletaDeposito.setBackground(new java.awt.Color(255, 255, 255));
-        boletaDeposito.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0), 3), "Boleta Retiro", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Roboto Condensed", 1, 18), new java.awt.Color(0, 0, 0))); // NOI18N
+        boletaDeposito.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0), 3), "Boleta Deposito", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Roboto Condensed", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
         boletaDeposito.setForeground(new java.awt.Color(0, 0, 0));
         boletaDeposito.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel9.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Nroº Transaccion:");
-        boletaDeposito.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, -1, 30));
+        boletaDeposito.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, -1, 30));
 
         jLabel10.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Nroº Cuenta:");
-        boletaDeposito.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, 30));
+        boletaDeposito.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, 30));
 
         jLabel12.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("DNI Cliente:");
-        boletaDeposito.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, 30));
+        boletaDeposito.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, 30));
 
         idTransaccion.setBackground(new java.awt.Color(255, 255, 255));
         idTransaccion.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
         idTransaccion.setForeground(new java.awt.Color(0, 0, 0));
         idTransaccion.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         idTransaccion.addActionListener(this::idTransaccionActionPerformed);
-        boletaDeposito.add(idTransaccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 170, 30));
+        boletaDeposito.add(idTransaccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, 170, 30));
 
         numCuenta.setBackground(new java.awt.Color(255, 255, 255));
         numCuenta.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
         numCuenta.setForeground(new java.awt.Color(0, 0, 0));
         numCuenta.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         numCuenta.addActionListener(this::numCuentaActionPerformed);
-        boletaDeposito.add(numCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 170, 30));
+        boletaDeposito.add(numCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 170, 30));
 
         dniCliente.setBackground(new java.awt.Color(255, 255, 255));
         dniCliente.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
         dniCliente.setForeground(new java.awt.Color(0, 0, 0));
         dniCliente.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         dniCliente.addActionListener(this::dniClienteActionPerformed);
-        boletaDeposito.add(dniCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 170, 30));
+        boletaDeposito.add(dniCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 170, 30));
 
         jLabel11.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Monto:");
-        boletaDeposito.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, 30));
+        boletaDeposito.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, 30));
 
         monto.setBackground(new java.awt.Color(255, 255, 255));
         monto.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
         monto.setForeground(new java.awt.Color(0, 0, 0));
         monto.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         monto.addActionListener(this::montoActionPerformed);
-        boletaDeposito.add(monto, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 250, 170, 30));
+        boletaDeposito.add(monto, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 170, 30));
 
         jLabel13.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("DNI Empleado:");
-        boletaDeposito.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, 30));
+        boletaDeposito.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, 30));
 
         dniEmpleado.setBackground(new java.awt.Color(255, 255, 255));
         dniEmpleado.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
         dniEmpleado.setForeground(new java.awt.Color(0, 0, 0));
         dniEmpleado.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         dniEmpleado.addActionListener(this::dniEmpleadoActionPerformed);
-        boletaDeposito.add(dniEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 170, 30));
+        boletaDeposito.add(dniEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 170, 30));
 
         jLabel16.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 0, 0));
         jLabel16.setText("Fecha :");
-        boletaDeposito.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, -1, 30));
+        boletaDeposito.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, -1, 30));
 
         fecha.setBackground(new java.awt.Color(255, 255, 255));
         fecha.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
         fecha.setForeground(new java.awt.Color(0, 0, 0));
         fecha.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         fecha.addActionListener(this::fechaActionPerformed);
-        boletaDeposito.add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 170, 30));
+        boletaDeposito.add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 170, 30));
 
-        jPanel1.add(boletaDeposito, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 440, 350));
+        jPanel1.add(boletaDeposito, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 440, 340));
 
         btnRetirar.setBackground(new java.awt.Color(204, 0, 0));
         btnRetirar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnRetirar.setForeground(new java.awt.Color(255, 255, 255));
-        btnRetirar.setText("Retirar");
+        btnRetirar.setText("Depositar");
         btnRetirar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRetirar.setDefaultCapable(false);
         btnRetirar.addActionListener(this::btnRetirarActionPerformed);
@@ -174,33 +178,33 @@ public class Pnl_Empleado_Deposito extends javax.swing.JPanel {
         avisoError.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel1.add(avisoError, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 440, 40));
 
-        jLabel8.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Leelawadee", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel8.setText("Numero de Cuenta:");
+        jLabel8.setText("Nroº de Cuenta:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 150, 30));
 
         numeroCuentaField.setBackground(new java.awt.Color(255, 255, 255));
-        numeroCuentaField.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
+        numeroCuentaField.setFont(new java.awt.Font("Leelawadee", 0, 14)); // NOI18N
         numeroCuentaField.addActionListener(this::numeroCuentaFieldActionPerformed);
         jPanel1.add(numeroCuentaField, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 170, 30));
 
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 170, 20));
 
-        jLabel14.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Leelawadee", 1, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Monto:");
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, 70, 40));
 
         montoField.setBackground(new java.awt.Color(255, 255, 255));
-        montoField.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
+        montoField.setFont(new java.awt.Font("Leelawadee", 0, 14)); // NOI18N
         montoField.addActionListener(this::montoFieldActionPerformed);
         jPanel1.add(montoField, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, 170, 30));
 
         jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 100, 170, 20));
 
-        jLabel15.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Leelawadee", 1, 18)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("Clave:");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 120, 70, 40));
@@ -209,33 +213,12 @@ public class Pnl_Empleado_Deposito extends javax.swing.JPanel {
         jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 150, 170, 20));
 
         claveField.setBackground(new java.awt.Color(255, 255, 255));
+        claveField.setFont(new java.awt.Font("Leelawadee", 0, 14)); // NOI18N
         claveField.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(claveField, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 120, 170, 30));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 920, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 870, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(4, 4, 4)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        add(jPanel1);
+        jPanel1.setBounds(25, 107, 870, 570);
     }// </editor-fold>//GEN-END:initComponents
 
     private void dniClienteFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dniClienteFieldActionPerformed

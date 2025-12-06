@@ -1,11 +1,9 @@
-
 package InterfazGrafica.panelAdmin;
 
 import Banco.ClasesBase.*;
 import Banco.GestorPrincipal.Banco;
 import InterfazGrafica.panelAdmin.PanelesMetodos.*;
 import java.awt.CardLayout;
-import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
@@ -37,7 +35,7 @@ public class Pnl_Menu_Admin extends javax.swing.JPanel {
         inicializarPaneles();
         setVisible(true);
         
-        nombreAdmin.setText(usuarioActual.getNombres());
+        nombreAdmin.setText("Usuario: " + usuarioActual.getNombres().toUpperCase());
     }
     
     private void inicializarPaneles() {
@@ -98,7 +96,7 @@ public class Pnl_Menu_Admin extends javax.swing.JPanel {
         iconoCliente.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         iconoCliente.setForeground(new java.awt.Color(0, 0, 0));
         iconoCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        iconoCliente.setText("Icono Cliente");
+        iconoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/icono_usuario.png"))); // NOI18N
 
         btnBuscarEmpleado.setBackground(new java.awt.Color(204, 0, 0));
         btnBuscarEmpleado.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -148,7 +146,7 @@ public class Pnl_Menu_Admin extends javax.swing.JPanel {
         btnAbrirCuenta.setBorderPainted(false);
         btnAbrirCuenta.addActionListener(this::btnAbrirCuentaActionPerformed);
 
-        nombreAdmin.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
+        nombreAdmin.setFont(new java.awt.Font("SimSun", 1, 14)); // NOI18N
         nombreAdmin.setForeground(new java.awt.Color(0, 0, 0));
         nombreAdmin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
@@ -195,35 +193,33 @@ public class Pnl_Menu_Admin extends javax.swing.JPanel {
                             .addComponent(btnDeposito, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                             .addComponent(btnRetirar, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                             .addComponent(btnCerrarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnAbrirCuenta1, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)))
+                            .addComponent(btnAbrirCuenta1, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                            .addComponent(nombreAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(nombreAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
+                        .addGap(60, 60, 60)
                         .addComponent(iconoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(iconoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(iconoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nombreAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(nombreAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBuscarCliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRegistrarCliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEliminarCliente)
-                .addGap(30, 30, 30)
+                .addGap(27, 27, 27)
                 .addComponent(btnBuscarEmpleado)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRegistrarEmpleado)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEliminarEmpleado)
-                .addGap(30, 30, 30)
+                .addGap(27, 27, 27)
                 .addComponent(btnAbrirCuenta)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAbrirCuenta1)
