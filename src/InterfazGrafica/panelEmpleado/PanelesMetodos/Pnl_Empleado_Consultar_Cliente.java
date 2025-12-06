@@ -12,6 +12,7 @@ public class Pnl_Empleado_Consultar_Cliente extends javax.swing.JPanel {
         initComponents();
         this.banco = banco;
         this.usuarioActual = usuarioActual;
+        setSize(920, 700);
     }
 
     @SuppressWarnings("unchecked")

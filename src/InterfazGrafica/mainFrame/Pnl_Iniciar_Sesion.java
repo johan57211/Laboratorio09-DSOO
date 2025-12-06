@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package InterfazGrafica.mainFrame;
 
 import Banco.ClasesBase.*;
@@ -11,10 +7,9 @@ public class Pnl_Iniciar_Sesion extends javax.swing.JPanel {
 
     private Banco banco;
     private Usuario usuarioActual;
+
     private LoginCallback callback; // NUEVO
-
     public interface LoginCallback {
-
         void onLoginExitoso(Usuario usuario);
     }
 

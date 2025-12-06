@@ -79,7 +79,7 @@ public class Pnl_Empleado_Deposito extends javax.swing.JPanel {
         jPanel1.add(limpiarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 130, 120, 40));
 
         boletaDeposito.setBackground(new java.awt.Color(255, 255, 255));
-        boletaDeposito.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0), 3), "Boleta Retiro", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Roboto Condensed", 1, 18), new java.awt.Color(0, 0, 0))); // NOI18N
+        boletaDeposito.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0), 3), "Boleta Deposito", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Roboto Condensed", 1, 18), new java.awt.Color(0, 0, 0))); // NOI18N
         boletaDeposito.setForeground(new java.awt.Color(0, 0, 0));
         boletaDeposito.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -160,7 +160,7 @@ public class Pnl_Empleado_Deposito extends javax.swing.JPanel {
         btnRetirar.setBackground(new java.awt.Color(204, 0, 0));
         btnRetirar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnRetirar.setForeground(new java.awt.Color(255, 255, 255));
-        btnRetirar.setText("Retirar");
+        btnRetirar.setText("Depositar");
         btnRetirar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRetirar.setDefaultCapable(false);
         btnRetirar.addActionListener(this::btnRetirarActionPerformed);

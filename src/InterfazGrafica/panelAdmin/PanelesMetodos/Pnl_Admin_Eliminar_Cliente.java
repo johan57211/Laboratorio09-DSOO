@@ -40,124 +40,116 @@ public class Pnl_Admin_Eliminar_Cliente extends javax.swing.JPanel {
         avisoError = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 0, 0));
+        setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Palatino Linotype", 1, 48)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Leelawadee", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Eliminar Cliente");
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("ELIMINAR CLIENTE");
+        add(jLabel1);
+        jLabel1.setBounds(0, 20, 920, 70);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Busque Al Cliente por DNI", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto Condensed", 0, 36), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Ingrese Datos Solicitados", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_TOP, new java.awt.Font("Leelawadee", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Ingrese DNI del Cliente: ");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 190, 30));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 190, 30));
 
         numDniEntrada.setBackground(new java.awt.Color(255, 255, 255));
-        numDniEntrada.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
+        numDniEntrada.setFont(new java.awt.Font("Leelawadee", 0, 14)); // NOI18N
         numDniEntrada.setForeground(new java.awt.Color(0, 0, 0));
         numDniEntrada.addActionListener(this::numDniEntradaActionPerformed);
-        jPanel1.add(numDniEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 170, 30));
+        jPanel1.add(numDniEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 170, 30));
 
         limpiarBtn.setBackground(new java.awt.Color(204, 0, 0));
-        limpiarBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        limpiarBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         limpiarBtn.setForeground(new java.awt.Color(255, 255, 255));
         limpiarBtn.setText("Limpiar");
         limpiarBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         limpiarBtn.setDefaultCapable(false);
         limpiarBtn.addActionListener(this::limpiarBtnActionPerformed);
-        jPanel1.add(limpiarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 100, 120, 40));
+        jPanel1.add(limpiarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 100, 120, 40));
 
         contratoEliminacion.setBackground(new java.awt.Color(255, 255, 255));
-        contratoEliminacion.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0), 3), "Cliente Eliminado", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Roboto Condensed", 1, 18), new java.awt.Color(0, 0, 0))); // NOI18N
+        contratoEliminacion.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 0), 3), "Cliente Eliminado", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Leelawadee", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
         contratoEliminacion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel9.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Leelawadee", 1, 16)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Nombre:");
-        contratoEliminacion.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
+        contratoEliminacion.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, -1, -1));
 
-        jLabel10.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Leelawadee", 1, 16)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("DNI: ");
-        contratoEliminacion.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
+        contratoEliminacion.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, -1, -1));
 
-        jLabel12.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Leelawadee", 1, 16)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Correo: ");
-        contratoEliminacion.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
+        contratoEliminacion.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, -1, -1));
 
         nombreCliente.setBackground(new java.awt.Color(255, 255, 255));
-        nombreCliente.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
+        nombreCliente.setFont(new java.awt.Font("Leelawadee", 0, 14)); // NOI18N
         nombreCliente.setForeground(new java.awt.Color(0, 0, 0));
+        nombreCliente.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         nombreCliente.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         nombreCliente.addActionListener(this::nombreClienteActionPerformed);
-        contratoEliminacion.add(nombreCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 170, 30));
+        contratoEliminacion.add(nombreCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 170, 30));
 
         dniCliente.setBackground(new java.awt.Color(255, 255, 255));
-        dniCliente.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
+        dniCliente.setFont(new java.awt.Font("Leelawadee", 0, 14)); // NOI18N
         dniCliente.setForeground(new java.awt.Color(0, 0, 0));
+        dniCliente.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         dniCliente.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         dniCliente.addActionListener(this::dniClienteActionPerformed);
-        contratoEliminacion.add(dniCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 170, 30));
+        contratoEliminacion.add(dniCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 170, 30));
 
         correoCliente.setBackground(new java.awt.Color(255, 255, 255));
-        correoCliente.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
+        correoCliente.setFont(new java.awt.Font("Leelawadee", 0, 14)); // NOI18N
         correoCliente.setForeground(new java.awt.Color(0, 0, 0));
+        correoCliente.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         correoCliente.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         correoCliente.addActionListener(this::correoClienteActionPerformed);
-        contratoEliminacion.add(correoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 170, 30));
+        contratoEliminacion.add(correoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, 170, 30));
 
-        jLabel13.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Leelawadee", 1, 16)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Edad:");
-        contratoEliminacion.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, 30));
+        contratoEliminacion.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, -1, 30));
 
         edadCliente.setBackground(new java.awt.Color(255, 255, 255));
-        edadCliente.setFont(new java.awt.Font("Roboto Condensed", 0, 12)); // NOI18N
+        edadCliente.setFont(new java.awt.Font("Leelawadee", 0, 14)); // NOI18N
         edadCliente.setForeground(new java.awt.Color(0, 0, 0));
+        edadCliente.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         edadCliente.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
         edadCliente.addActionListener(this::edadClienteActionPerformed);
-        contratoEliminacion.add(edadCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 170, 30));
+        contratoEliminacion.add(edadCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 170, 30));
 
-        jPanel1.add(contratoEliminacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 440, 270));
+        jPanel1.add(contratoEliminacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 540, 300));
 
         eliminarBtn.setBackground(new java.awt.Color(204, 0, 0));
-        eliminarBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        eliminarBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         eliminarBtn.setForeground(new java.awt.Color(255, 255, 255));
         eliminarBtn.setText("Eliminar");
         eliminarBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         eliminarBtn.setDefaultCapable(false);
         eliminarBtn.addActionListener(this::eliminarBtnActionPerformed);
-        jPanel1.add(eliminarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, 120, 40));
+        jPanel1.add(eliminarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, 120, 40));
 
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 170, 20));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 170, 20));
 
         avisoError.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         avisoError.setForeground(new java.awt.Color(153, 0, 0));
         avisoError.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(avisoError, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 440, 40));
+        jPanel1.add(avisoError, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 440, 40));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 870, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        add(jPanel1);
+        jPanel1.setBounds(30, 104, 860, 570);
     }// </editor-fold>//GEN-END:initComponents
 
     private void numDniEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numDniEntradaActionPerformed
